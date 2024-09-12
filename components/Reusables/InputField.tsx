@@ -7,10 +7,10 @@ interface InputFieldProps {
  placeholder?: string;
  type?: string;
  value: string;
- register: UseFormRegister<string>; // Register method from react-hook-form
+ register: UseFormRegister<string>; 
  name: string;
  required?: boolean;
- error?: FieldError; // FieldError type for error handling
+ error?: FieldError; 
 }
 
 const InputField: React.FC<InputFieldProps> = ({
