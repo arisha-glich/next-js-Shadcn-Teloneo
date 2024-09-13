@@ -13,16 +13,11 @@ const Provider = ({
  const [queryClient] = useState(() => new QueryClient());
 
  return (
-  <ThemeProvider
-   attribute="class"
-   defaultTheme="system"
-   enableSystem
-   disableTransitionOnChange
-  >
+ 
    <QueryClientProvider client={queryClient}>
     <AuthProvider session={session}>{children}</AuthProvider>
    </QueryClientProvider>
-  </ThemeProvider>
+ // </ThemeProvider>
  );
 };
 

@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import { Button } from '../ui/button'; // Adjust this import path to the actual location of your button component
+import { Button } from '../../components/ui/button'; // Adjust this import path to the actual location of your button component
 import SvgLogo from '../../public/GreenTick.svg';
 const SuccessMessage: React.FC = () => {
  return (
   <div className="mx-auto my-32 flex h-[530px] w-[656px] flex-col items-center justify-center rounded-lg bg-white shadow-lg">
    {/* Green Checkmark Circle */}
-   <div className="mb-8 flex h-32 w-45 items-center justify-center rounded-full bg-background">
+   <div className="w-45 mb-8 flex h-32 items-center justify-center rounded-full bg-background">
     <SvgLogo />
    </div>
 
@@ -27,7 +27,11 @@ const SuccessMessage: React.FC = () => {
    </p>
 
    {/* Custom Button */}
-   <Button variant="default" size="lg" className="h-12 w-32 text-white rounded-lg">
+   <Button
+    variant="default"
+    size="lg"
+    className="h-12 w-32 rounded-lg text-white"
+   >
     Okay
    </Button>
   </div>

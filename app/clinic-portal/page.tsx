@@ -2,15 +2,10 @@
 import React from 'react';
 import Header from '@/components/Reusables/Header';
 import Footer from '@/components/Reusables/Footer';
-import ClinicRegistrationForm from '@/components/NotResuables/Form'; // Assuming the form is here
-import LoginHeader from '@/components/Reusables/LoginHeader';
+import ClinicRegistrationForm from '@/app/Form'; // Assuming the form is here
+import LoginHeader from '@/app/clinic-portal/LoginHeader';
 
 const RegisterPage: React.FC = () => {
- const handleFormSubmit = (data: any) => {
-  // Form submission handler
-  console.log('Form data:', data);
- };
-
  return (
   <div className="flex min-h-screen flex-col">
    <LoginHeader />

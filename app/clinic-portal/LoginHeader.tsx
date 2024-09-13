@@ -2,14 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 import SvgLogo from '../../public/GreenLog.svg';
-import ClinicRegistrationForm from '@/app/Form'; // Import the form component here
+import SuccessMessage from './SuccessMessage';
 
-const Header: React.FC = () => {
- const handleFormSubmit = (data: any) => {
-  // Form submission handler
-  console.log('Form data:', data);
- };
-
+const LoginHeader: React.FC = () => {
  return (
   <div>
    <header className="flex h-[537px] w-full flex-col items-center justify-center bg-[#F0F0F0]">
@@ -21,7 +16,7 @@ const Header: React.FC = () => {
     {/* Header Links */}
     <nav className="absolute left-[524px] top-[42px] flex space-x-8">
      <Link
-      href="/individual-doctor"
+      href="/"
       className="font-open-sans text-left text-[16px] font-[400] leading-[21.79px]"
      >
       Individual Doctor
@@ -30,7 +25,7 @@ const Header: React.FC = () => {
       href="/clinic-portal"
       className="font-open-sans text-left text-[16px] font-[400] leading-[21.79px]"
      >
-      Clinic Portal
+      Therapy Clinic
      </Link>
     </nav>
 
@@ -45,7 +40,7 @@ const Header: React.FC = () => {
     </div>
     <div className="mt-[300px] flex items-center justify-center">
      <div className="w-[606px]">
-      <ClinicRegistrationForm onSubmit={handleFormSubmit} />
+      <SuccessMessage />
      </div>
     </div>
    </header>
@@ -55,4 +50,4 @@ const Header: React.FC = () => {
  );
 };
 
-export default Header;
+export default LoginHeader;

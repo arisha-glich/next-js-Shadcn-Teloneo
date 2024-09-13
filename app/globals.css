@@ -18,8 +18,8 @@
     --secondary: 0.00 0.00% 94.12%; /*backgrund grey clr */
     --secondary-forground: 321.82 5.12% 57.84%; /* form fields*/
     
-    --accent: 27 87% 67%; /* Chart-5 (orange tone) */
-    --accent-foreground: 222.2 47.4% 11.2%; /* Black foreground for accents */
+    --accent: 120.00 100.00% 99.02%; /* ring wali line ka color */
+    --accent-foreground: 38.35 100.00% 50.00%; /*mustard color*/
     
     --destructive: 0 84.2% 60.2%; /* Red for destructive actions */
     --destructive-foreground: 210 40% 98%; /* Light foreground for destructive */

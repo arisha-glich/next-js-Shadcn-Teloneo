@@ -2,7 +2,6 @@
 import React from 'react';
 import Header from '@/components/Reusables/Header';
 import Footer from '@/components/Reusables/Footer';
-import ClinicRegistrationForm from '@/components/NotResuables/Form'; // Assuming the form is here
 
 const RegisterPage: React.FC = () => {
   const handleFormSubmit = (data: any) => {
