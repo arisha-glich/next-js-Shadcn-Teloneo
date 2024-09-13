@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0.00 0.00% 100.00%;
+    --background: 0.00 0.00% 100.00%;/* white color*/
     --foreground: 0.00 0.00% 9.80%;
     --card: 0 0% 100%; /* White card */
     --card-foreground: 222.2 84% 4.9%; /* Dark foreground for cards */
@@ -14,12 +14,9 @@
     /* Primary colors based on your image */
     --primary: 120.68 39.29% 43.92%;
     --primary-foreground: 120.00 39.13% 4.51%;
-    
-    --secondary: 0 0% 100%; /* White (for secondary) */
-    --secondary-foreground: 222.2 84% 4.9%; /* Black foreground */
-    
-    --muted: 43 74% 66%; /* Light green */
-    --muted-foreground: 222.2 47.4% 11.2%; /* Dark green */
+
+    --secondary: 0.00 0.00% 94.12%; /*backgrund grey clr */
+    --secondary-forground: 321.82 5.12% 57.84%; /* form fields*/
     
     --accent: 27 87% 67%; /* Chart-5 (orange tone) */
     --accent-foreground: 222.2 47.4% 11.2%; /* Black foreground for accents */
