@@ -33,7 +33,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
 
  return (
   <div className="flex h-screen items-center justify-center">
-   <div className="h-[530px] w-[606px] rounded-lg bg-background p-8 shadow-md">
+   <div className="h-[530px] w-[606px] rounded-xl bg-background p-8 shadow-md">
     <h1 className="font-open-sans text-center text-[26px] font-semibold">
      Register Your Clinic with TeleNeo!
     </h1>
@@ -91,7 +91,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
        </Button>
        <Button
         type="submit"
-        className="rounded-md bg-primary px-4 mt-4 py-2 text-background"
+        className="rounded-xl bg-primary px-14 mt-4 py-2 text-background"
        >
         Register
        </Button>

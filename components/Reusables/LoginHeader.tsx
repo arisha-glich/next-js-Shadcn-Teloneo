@@ -2,9 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 import SvgLogo from '../../public/GreenLog.svg';
-import ClinicRegistrationForm from '@/components/NotResuables/Form'; // Import the form component here
+import SuccessMessage from '../NotResuables/SuccessMessage';
 
-const Header: React.FC = () => {
+const LoginHeader: React.FC = () => {
   const handleFormSubmit = (data: any) => {
     // Form submission handler
     console.log('Form data:', data);
@@ -21,7 +21,7 @@ const Header: React.FC = () => {
         {/* Header Links */}
         <nav className="absolute top-[42px] left-[524px] flex space-x-8">
           <Link
-            href="/individual-doctor"
+            href="/"
             className="font-open-sans text-[16px] font-[400] leading-[21.79px] text-left"
           >
             Individual Doctor
@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             href="/clinic-portal"
             className="font-open-sans text-[16px] font-[400] leading-[21.79px] text-left"
           >
-            Clinic Portal
+            Therapy Clinic
           </Link>
         </nav>
 
@@ -42,7 +42,7 @@ const Header: React.FC = () => {
         </div>
         <div className="mt-[300px] flex items-center justify-center">
         <div className="w-[606px]">
-          <ClinicRegistrationForm onSubmit={handleFormSubmit} />
+          <SuccessMessage/>
         </div>
       </div>
       </header>
@@ -53,4 +53,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default LoginHeader;
