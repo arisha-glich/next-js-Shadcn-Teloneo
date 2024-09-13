@@ -1,4 +1,3 @@
-import { String } from 'lodash';
 import React from 'react';
 import { UseFormRegister, FieldError } from 'react-hook-form';
 
