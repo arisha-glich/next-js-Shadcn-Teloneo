@@ -21,12 +21,12 @@
     --accent: 120.00 100.00% 99.02%; /* ring wali line ka color */
     --accent-foreground: 38.35 100.00% 50.00%; /*mustard color*/
     
-    --destructive: 0 84.2% 60.2%; /* Red for destructive actions */
+    --destructive: 120.00 100.00% 92.94%;; /* Main-dashboard ki strip ka color */
     --destructive-foreground: 210 40% 98%; /* Light foreground for destructive */
     
     --border: 0 0% 75%; /* Light grey (grey tone in the image) */
     --input: 0 0% 75%; /* Light grey for inputs */
-    --ring: 222.2 84% 4.9%; /* Dark */
+    --ring: 220.00 14.29% 95.88%; /* form k pechla color*/
     
     --radius: 0.5rem;
     

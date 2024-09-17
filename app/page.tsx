@@ -4,10 +4,7 @@ import Header from '@/components/Reusables/Header';
 import Footer from '@/components/Reusables/Footer';
 
 const RegisterPage: React.FC = () => {
-  const handleFormSubmit = (data: any) => {
-    // Form submission handler
-    console.log('Form data:', data);
-  };
+
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -4,8 +4,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
+
 import { Button } from '@/components/ui/button';
-import InputField from './InputField';
+import InputField from './InputField'; // Import InputField from a separate file
 
 // Define form validation schema with Zod
 const formSchema = z.object({
@@ -27,9 +28,23 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset, // Get reset function from useForm
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
+
+  // Function to handle successful form submission
+  const handleSuccessfulSubmit: SubmitHandler<FormValues> = data => {
+    onSubmit(data);
+    window.location.href = '/clinic-portal'; // Redirect to clinic-portal after successful registration
+  };
+
+  // Function to handle cancel button
+  const handleCancel = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault(); // Prevent form submission when clicking "Cancel"
+    reset(); // Reset the form values
+    console.log('Form canceled and reset');
+  };
 
   return (
     <div className="flex h-screen items-center justify-center">
@@ -42,7 +57,10 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
         </p>
 
         <div className="h-[350px] w-full bg-background">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form
+            onSubmit={handleSubmit(handleSuccessfulSubmit)}
+            className="space-y-4"
+          >
             {/* Input fields */}
             <InputField
               label="Clinic Name"
@@ -86,6 +104,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
               <Button
                 variant="link"
                 className="flex h-[45px] justify-start text-primary"
+                onClick={handleCancel} // Handle cancel button click
               >
                 Cancel
               </Button>
@@ -103,4 +122,5 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
   );
 };
 
+// Ensure InputField is defined only in its separate file (e.g., `InputField.tsx`)
 export default ReusableForm;
