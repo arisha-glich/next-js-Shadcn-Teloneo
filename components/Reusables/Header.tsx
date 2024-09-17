@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import SvgLogo from '../../public/GreenLog.svg';
-import ClinicRegistrationForm from '@/app/Form'; // Import the form component here
+import ClinicRegistrationForm from '@/app/Form'; 
 
 const Header: React.FC = () => {
  const handleFormSubmit = (data: any) => {

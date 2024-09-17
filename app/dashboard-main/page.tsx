@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Sidebar from '@/components/Reusables/SideBar';
 import {
  Card,
@@ -23,7 +23,6 @@ import TotalActiveIcon from '../../public/curvedline.svg';
 import TotalCompletedIcon from '../../public/checkmark-done-circle-outline.svg';
 import Client from '../../public/c1.svg';
 import Clienttwo from '../../public/c2.svg';
-import Image from 'next/image';
 import VideoIcon from '../../public/table1.svg'; // Replace with actual SVG path
 import ClockIcon from '../../public/3dots.svg'; // Replace with actual SVG path
 import ActionMenuIcon from '../../public/video.svg'; // Replace with actual SVG path

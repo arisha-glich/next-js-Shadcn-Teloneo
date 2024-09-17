@@ -22,7 +22,6 @@ import Modal from '@/components/ui/modal'; // Import the Modal component
 const DashboardPage: React.FC = () => {
  const [isModalOpen, setIsModalOpen] = useState(true); // Initialize modal state
 
- const handleOpenModal = () => setIsModalOpen(true);
  const handleCloseModal = () => setIsModalOpen(false);
 
  return (

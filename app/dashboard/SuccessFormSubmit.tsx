@@ -5,7 +5,6 @@ import { Input } from '@/components/ui/input'; // Ensure the path is correct
 import { cn } from '@/lib/utils'; // Make sure this utility function exists or use classnames/clsx
 import PaperclipIcon from '../../public/paperclip-solid 1.svg'; // Ensure this is the correct path
 import SuccessFormSubmit from './SuccessFormSubmit'; // Ensure this is the correct path
-import SuccessMessage from '../clinic-portal/SuccessMessage';
 
 // Define the types for the form state and actions
 interface FormState {
@@ -33,7 +32,7 @@ const useFormStore = create<FormState & FormActions>(set => ({
 }));
 
 export default function ClinicSupportForm() {
-  const { step, success, nextStep, prevStep, setSuccess } = useFormStore(); // Access Zustand state and actions
+  const { step, nextStep, prevStep, setSuccess } = useFormStore(); // Access Zustand state and actions
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

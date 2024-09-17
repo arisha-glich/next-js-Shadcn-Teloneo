@@ -1,8 +1,6 @@
 'use client';
 import React from 'react';
-import Header from '@/components/Reusables/Header';
 import Footer from '@/components/Reusables/Footer';
-import ClinicRegistrationForm from '@/app/Form'; // Assuming the form is here
 import LoginHeader from '@/app/clinic-portal/LoginHeader';
 
 const RegisterPage: React.FC = () => {
