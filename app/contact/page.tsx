@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import Sidebar from '@/components/Reusables/SideBar';
 import Arrow from '../../public/arrow-right-solid 2.svg';
 import Icon from '../../public/cards/clipboard-list-check-solid 1.svg';
+import Icon2 from '../../public/cards/arrow-right-solid 1.svg';
 
 // Sample data
 const contacts = [
@@ -261,35 +262,52 @@ const ContactTable = () => {
        </TableBody>
       </Table>
      </div>
+{/* Pagination */}
+<div className="mt-4 flex items-center justify-between">
+  <div className="flex gap-2 items-center">
+    {/* Previous Page Button */}
+    <Button
+      variant="outline"
+      className="h-[40px] w-[40px] p-1 bg-white hover:bg-gray-100"
+      onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+    >
+      <Icon2 width="10px" height="10px" />
+    </Button>
 
-  {/* Pagination */}
-  <div className="mt-4 flex items-center justify-between">
-      <div className="flex gap-2">
-       {[...Array(totalPages)].map((_, i) => (
-        <Button
-         key={i}
-         variant="outline"
-         onClick={() => setCurrentPage(i + 1)}
-         className={currentPage === i + 1 ? '' : ''}
-        >
-         {i + 1}
-        </Button>
-       ))}{' '}
-       <Button
+    {/* Page Number Buttons */}
+    {[...Array(totalPages)].map((_, i) => (
+      <Button
+        key={i}
         variant="outline"
-        className="h-[40px] w-[40px] bg-primary p-1 hover:bg-primary"
-        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-       >
-        <Arrow width="10px" height="10px "></Arrow>
-       </Button>
-       <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-500">
-         {indexOfFirstContact + 1} -{' '}
-         {Math.min(indexOfLastContact, contacts.length)} of {contacts.length}
-        </span>
-       </div>
-      </div>
-     </div>
+        onClick={() => setCurrentPage(i + 1)}
+        className={`h-[40px] w-[40px] p-1 ${
+          currentPage === i + 1 ? 'text-accent-foreground ' : 'text-black'
+        } hover:bg-gray-100`}
+      >
+        {i + 1}
+      </Button>
+    ))}
+
+    {/* Next Page Button */}
+    <Button
+      variant="outline"
+      className="h-[40px] w-[40px] p-1 bg-primary hover:bg-gray-100"
+      onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+    >
+      <Arrow width="10px" height="10px" />
+    </Button>
+
+    {/* Page Info */}
+    <div className="flex items-center gap-2">
+      <span className="text-sm text-gray-500">
+        {indexOfFirstContact + 1} -{' '}
+        {Math.min(indexOfLastContact, contacts.length)} of {contacts.length}
+      </span>
+    </div>
+  </div>
+</div>
+
+
     </div>
    </div>
   </div>
