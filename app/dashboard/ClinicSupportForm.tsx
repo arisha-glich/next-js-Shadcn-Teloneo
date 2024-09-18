@@ -5,48 +5,85 @@ import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import PaperclipIcon from '../../public/paperclip-solid 1.svg';
 import SuccessFormSubmit from './SuccessFormSubmit';
+import React, { useEffect } from 'react';
 
 // Define the types for the form state and actions
 interface FormState {
-  step: number;
-  success: boolean;
-}
+    step: number;
+    success: boolean;
+    formData: FormData; 
+  }
+  
+  
+interface FormData {
+    clinicLogo?: string;
+    clinicName?: string;
+    representativeName?: string;
+    representativeEmail?: string;
+    clinicAddress?: string;
+    serviceCategory?: string;
+    subCategory?: string;
+  }
+  
 
-interface FormActions {
-  nextStep: () => void;
-  prevStep: () => void;
-  setStep: (step: number) => void;
-  setSuccess: (success: boolean) => void;
-}
+  interface FormActions {
+    nextStep: () => void;
+    prevStep: () => void;
+    setStep: (step: number) => void;
+    setSuccess: (success: boolean) => void;
+    setFormData: (data: Partial<FormData>) => void; // Only update part of the form data
+  }
+  
 
 // Zustand store to manage form state
 const useFormStore = create<FormState & FormActions>((set) => ({
-  step: 1,
-  success: false,
-  nextStep: () => set((state) => ({ step: state.step < 4 ? state.step + 1 : state.step })),
-  prevStep: () => set((state) => ({ step: state.step > 1 ? state.step - 1 : state.step })),
-  setStep: (step: number) => set({ step }),
-  setSuccess: (success: boolean) => set({ success }),
-}));
+    step: 1,
+    success: false,
+    formData: {}, // initialize empty form data
+    nextStep: () => set((state) => ({ step: state.step < 4 ? state.step + 1 : state.step })),
+    prevStep: () => set((state) => ({ step: state.step > 1 ? state.step - 1 : state.step })),
+    setStep: (step: number) => set({ step }),
+    setSuccess: (success: boolean) => set({ success }),
+    setFormData: (data: Partial<FormData>) => set((state) => ({ formData: { ...state.formData, ...data } })), // update form data
+  }));
+  
+  
 
 interface ClinicSupportFormProps {
   closeModal: () => void; // Function to close the modal
 }
 
 export default function ClinicSupportForm({ closeModal }: ClinicSupportFormProps) {
-  const { step, success, nextStep, prevStep, setSuccess } = useFormStore();
+  const { step, success, nextStep, prevStep, setSuccess, formData, setFormData } = useFormStore();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Load data from localStorage on mount
+  useEffect(() => {
+    const savedFormData = localStorage.getItem('clinicSupportForm');
+    if (savedFormData) {
+      setFormData(JSON.parse(savedFormData));
+    }
+  }, [setFormData]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    // Save data to localStorage
+    localStorage.setItem('clinicSupportForm', JSON.stringify(formData));
+  
     if (step === 4) {
       setSuccess(true);
+      localStorage.removeItem('clinicSupportForm'); // Clear localStorage after submission
       closeModal(); // Close the modal when the form is successfully submitted
     } else {
       nextStep();
     }
   };
+  
 
+  // Function to handle input changes and update form data
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ [e.target.name]: e.target.value } as Partial<FormData>);
+  };
+  
   if (success) {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center">
@@ -105,6 +142,9 @@ export default function ClinicSupportForm({ closeModal }: ClinicSupportFormProps
                 type="text"
                 required
                 placeholder="Attach CNIC Logo"
+                name="clinicLogo"
+                value={formData.clinicLogo || ''}
+                onChange={handleInputChange}
                 className="h-[45px] w-full rounded-[7px] bg-ring pr-10 text-black placeholder:text-[12px] border-0"
               />
               <div className="absolute inset-y-0 right-0 flex items-center pr-3">
@@ -118,11 +158,14 @@ export default function ClinicSupportForm({ closeModal }: ClinicSupportFormProps
               type="text"
               required
               placeholder="Clinic name"
+              name="clinicName"
+              value={formData.clinicName || ''}
+              onChange={handleInputChange}
               className="mt-4 h-[45px] w-full rounded-[7px] bg-ring placeholder:text-[12px] text-gray-400 border-0"
             />
           </div>
         )}
-        {step === 2 && (
+       {step === 2 && (
           <div>
             <Input
               type="text"
@@ -207,6 +250,7 @@ export default function ClinicSupportForm({ closeModal }: ClinicSupportFormProps
           </div>
         )}
       </div>
+     
 
       {/* Navigation Buttons */}
       <div className="mt-6 flex justify-center gap-4">
@@ -218,10 +262,7 @@ export default function ClinicSupportForm({ closeModal }: ClinicSupportFormProps
         >
           Prev
         </Button>
-        <Button
-          type="submit"
-          className="h-[45px] flex-1 bg-primary"
-        >
+        <Button type="submit" className="h-[45px] flex-1 bg-primary">
           {step === 4 ? 'Submit' : 'Next'}
         </Button>
       </div>

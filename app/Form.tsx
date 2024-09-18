@@ -3,12 +3,10 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-
-
+import { useRouter } from 'next/navigation'; 
 import { Button } from '@/components/ui/button';
-import InputField from './InputField'; // Import InputField from a separate file
+import InputField from './InputField'; 
 
-// Define form validation schema with Zod
 const formSchema = z.object({
   username: z.string().nonempty('Username is required'),
   email: z.string().email('Invalid email address').nonempty('Email is required'),
@@ -16,7 +14,7 @@ const formSchema = z.object({
   streetAddress: z.string().nonempty('Street address is required'),
 });
 
-// Infer the form values type from the Zod schema
+
 type FormValues = z.infer<typeof formSchema>;
 
 interface ReusableFormProps {
@@ -24,6 +22,8 @@ interface ReusableFormProps {
 }
 
 const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
+  const router = useRouter(); 
+
   const {
     register,
     handleSubmit,
@@ -32,11 +32,9 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
-
-  // Function to handle successful form submission
   const handleSuccessfulSubmit: SubmitHandler<FormValues> = data => {
     onSubmit(data);
-    window.location.href = '/clinic-portal'; // Redirect to clinic-portal after successful registration
+    router.push('/clinic-portal'); // Redirect to clinic-portal after successful registration
   };
 
   // Function to handle cancel button
@@ -48,7 +46,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
 
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="h-[500px] w-[606px] rounded-xl bg-background p-8 shadow-md">
+      <div className="h-[500px] w-[590px] rounded-xl bg-background p-5 shadow-md">
         <h1 className="font-open-sans text-center text-[26px] font-semibold">
           Register Your Clinic with TeleNeo!
         </h1>
@@ -56,7 +54,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
           Join as a clinic who will lorem ipsum dolor sit amet consectetur.
         </p>
 
-        <div className="h-[350px] w-full bg-background">
+        <div className="h-[350px] p-4 w-full bg-background">
           <form
             onSubmit={handleSubmit(handleSuccessfulSubmit)}
             className="space-y-4"
@@ -100,9 +98,10 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
             />
 
             {/* Buttons inside the container */}
-            <div className="flex justify-end space-x-6 pt-6">
+            <div className="flex justify-end space-x-6 pt-14">
               <Button
                 variant="link"
+                type='button'
                 className="flex h-[45px] justify-start text-primary"
                 onClick={handleCancel} // Handle cancel button click
               >
@@ -110,7 +109,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
               </Button>
               <Button
                 type="submit"
-                className="rounded-xl bg-primary px-14 py-2 text-background"
+                className="rounded-3xl bg-primary px-14 py-2 text-background"
               >
                 Register
               </Button>
@@ -122,5 +121,4 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
   );
 };
 
-// Ensure InputField is defined only in its separate file (e.g., `InputField.tsx`)
 export default ReusableForm;

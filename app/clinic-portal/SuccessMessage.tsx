@@ -1,13 +1,15 @@
 'use client';
 import React from 'react';
+import { useRouter } from 'next/navigation'; // Make sure this is imported correctly
 import { Button } from '../../components/ui/button'; // Adjust this import path to the actual location of your button component
 import SvgLogo from '../../public/GreenTick.svg';
 
 const SuccessMessage: React.FC = () => {
-  
-  // Function to handle button click and navigate to Clinic-support-form
+  const router = useRouter();
+
+  // Function to handle button click and navigate to Dashboard
   const handleButtonClick = () => {
-    window.location.href = '/clinic-support-form'; // Redirect to Clinic-support-form page
+    router.push('/dashboard'); // Redirect to Dashboard page
   };
 
   return (

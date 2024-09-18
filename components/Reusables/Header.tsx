@@ -5,7 +5,7 @@ import SvgLogo from '../../public/GreenLog.svg';
 import ClinicRegistrationForm from '@/app/Form'; 
 
 const Header: React.FC = () => {
- const handleFormSubmit = (data: any) => {
+ const handleFormSubmit = (data: { username: string; email: string; phone: string; streetAddress: string; }) => {
   // Form submission handler
   console.log('Form data:', data);
  };
