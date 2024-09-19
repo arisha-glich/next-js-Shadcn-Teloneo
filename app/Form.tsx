@@ -46,7 +46,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
 
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="h-[500px] w-[590px] rounded-xl bg-background p-5 shadow-md">
+      <div className="h-[530px] w-[590px] rounded-xl bg-background p-5 shadow-md">
         <h1 className="font-open-sans text-center text-[26px] font-semibold">
           Register Your Clinic with TeleNeo!
         </h1>

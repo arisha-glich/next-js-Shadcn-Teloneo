@@ -10,13 +10,13 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import Sidebar from '@/components/Reusables/SideBar'; // Assuming you have this sidebar component
-import Header from '@/components/Reusables/Header'; // Assuming you have a header component
 import VideoIcon from '../../public/patient/1.svg'; // Video icon
 import AttachIcon from '../../public/patient/3.svg'; // Attach icon
 import Arrow from '../../public/patient/4.svg';
 import Icon3 from '../../public/patient/5.svg';
 import Icon2 from '../../public/patient/2.svg';
 import Icon from '../../public/cards/clipboard-list-check-solid 1.svg';
+import Arrow2 from '../../public/arrow-right-solid 1.svg';
 
 // Sample data for the patient table
 const patients = [
@@ -188,7 +188,7 @@ const patients = [
 const PatientTable = () => {
  // Pagination state
  const [currentPage, setCurrentPage] = useState(1);
- const patientsPerPage = 5;
+ const patientsPerPage = 4;
 
  // Calculate current patients based on pagination
  const indexOfLastPatient = currentPage * patientsPerPage;
@@ -205,7 +205,10 @@ const PatientTable = () => {
    {/* Sidebar */}
    <Sidebar />
    <div className="flex-grow p-12 pr-10">
-    <div className="mx-auto flex h-[100] w-[1128px] flex-col gap-4 pl-5">
+    <div
+     className="mx-auto flex h-[100] flex-col gap-4 pl-5"
+     style={{ width: 'calc(100% - 102px)' }}
+    >
      <header className="mb-4 flex items-center justify-between">
       <h1 className="text-2xl font-semibold">All Appointments</h1>
       <Button variant="default" className="flex items-center space-x-2">
@@ -215,10 +218,13 @@ const PatientTable = () => {
      </header>
     </div>
 
-    <div className="mx-auto flex h-[100] w-[1128px] flex-col gap-4 pl-5"></div>
+    <div
+     className="mx-auto flex h-[100] flex-col gap-4 pl-5"
+     style={{ width: 'calc(100% - 102px)' }}
+    ></div>
 
     {/* Patient Table */}
-    <div className="mx-auto ml-10 flex h-[581px] w-[1260px] flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground">
+    <div className="mx-auto ml-10 flex h-[581px] flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground">
      <div className="overflow-x-hidden">
       <header className="mb-4 flex items-center justify-between">
        {/* Filters */}
@@ -307,7 +313,7 @@ const PatientTable = () => {
              <Icon2 className="h-26 w-30 text-primary" />
             </div>
            ) : (
-            <AttachIcon  className="h-26 w-26 text-primary " />
+            <AttachIcon className="h-26 w-26 text-primary" />
            )}
           </TableCell>
          </TableRow>
@@ -317,15 +323,16 @@ const PatientTable = () => {
      </div>
 
      {/* Pagination */}
+     {/* Previous Page Button */}
      <div className="mt-4 flex items-center justify-between">
       <div className="flex items-center gap-2">
        {/* Previous Page Button */}
        <Button
         variant="outline"
-        className="h-[40px] w-[40px] bg-white p-1 hover:bg-gray-100"
+        className="bg-gray flex h-[40px] w-[40px] items-center justify-center p-1 hover:bg-gray-100"
         onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
        >
-        <Icon2 width="10px" height="10px" />
+        <Arrow2 width="24px" height="24px" />
        </Button>
 
        {/* Page Number Buttons */}
@@ -334,7 +341,7 @@ const PatientTable = () => {
          key={i}
          variant="outline"
          onClick={() => setCurrentPage(i + 1)}
-         className={`h-[40px] w-[40px] p-1 ${
+         className={`flex h-[40px] w-[40px] items-center justify-center p-1 ${
           currentPage === i + 1 ? 'text-accent-foreground' : 'text-black'
          } hover:bg-gray-100`}
         >
@@ -345,20 +352,20 @@ const PatientTable = () => {
        {/* Next Page Button */}
        <Button
         variant="outline"
-        className="h-[40px] w-[40px] bg-primary p-1 hover:bg-gray-100"
+        className="flex h-[40px] w-[40px] items-center justify-center bg-primary p-1 hover:bg-gray-100"
         onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
        >
-        <Arrow width="10px" height="10px" />
+        <Arrow width="24px" height="24px" />
        </Button>
-
-       {/* Page Info */}
-       <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-500">
-         {indexOfFirstPatient + 1} -{' '}
-         {Math.min(indexOfLastPatient, patients.length)} of {patients.length}
-        </span>
-       </div>
       </div>
+     </div>
+
+     {/* Page Info */}
+     <div className="flex items-center gap-2">
+      <span className="text-sm text-gray-500">
+       {indexOfFirstPatient + 1} -{' '}
+       {Math.min(indexOfLastPatient, patients.length)} of {patients.length}
+      </span>
      </div>
     </div>
    </div>

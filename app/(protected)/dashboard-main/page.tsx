@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Sidebar from '@/components/Reusables/SideBar';
 import {
  Card,
  CardContent,
@@ -17,26 +16,26 @@ import {
  TableHeader,
  TableRow,
 } from '@/components/ui/table'; // Importing Shadcn table components
-import AppointmentsIcon from '../../public/user.svg';
-import UpcomingIcon from '../../public/secondcard.svg';
-import TotalActiveIcon from '../../public/curvedline.svg';
-import TotalCompletedIcon from '../../public/checkmark-done-circle-outline.svg';
-import Client from '../../public/c1.svg';
-import Clienttwo from '../../public/c2.svg';
-import VideoIcon from '../../public/table1.svg'; // Replace with actual SVG path
-import ClockIcon from '../../public/3dots.svg'; // Replace with actual SVG path
-import ActionMenuIcon from '../../public/video.svg'; // Replace with actual SVG path
-import Cardone from '../../public/cards/1.svg'; 
-import Cardtwo from '../../public/cards/2.svg'; 
-import Cardthree from '../../public/cards/3.svg'; 
+import AppointmentsIcon from '../../../public/user.svg';
+import UpcomingIcon from '../../../public/secondcard.svg';
+import TotalActiveIcon from '../../../public/curvedline.svg';
+import TotalCompletedIcon from '../../../public/checkmark-done-circle-outline.svg';
+import Client from '../../../public/c1.svg';
+import Clienttwo from '../../../public/c2.svg';
+import VideoIcon from '../../../public/table1.svg'; // Replace with actual SVG path
+import ClockIcon from '../../../public/3dots.svg'; // Replace with actual SVG path
+import ActionMenuIcon from '../../../public/video.svg'; // Replace with actual SVG path
+import Cardone from '../../../public/cards/1.svg'; 
+import Cardtwo from '../../../public/cards/2.svg'; 
+import Cardthree from '../../../public/cards/3.svg'; 
 
 const DashboardPage: React.FC = () => {
  return (
-  <div className="flex min-h-screen">
-   <Sidebar />
+    <>
+  <div className="flex ">
 
-   <div className="flex-grow p-12 pr-10">
-    <div className="mx-auto flex h-[450px] w-[1128px] flex-col gap-4 pl-5">
+   <div className="flex-grow m-8">
+    <div className="mx-auto flex h-[full]  flex-col gap-4 pl-5" style={{ width: 'calc(100% - 120px)'}}>
      {/* Header Section */}
      <header className="mb-4 flex items-center justify-between">
       <h1 className="text-2xl font-semibold">Welcome, ABC Clinic</h1>
@@ -97,7 +96,7 @@ const DashboardPage: React.FC = () => {
      </div>
 
      {/* Status Messages */}
-     <div className="h-[80px]items-center mt-6 flex w-[1108px] gap-2 rounded-lg bg-destructive p-6">
+     <div className="h-[80px]items-center mt-6 flex  gap-2 rounded-lg bg-destructive p-6" style={{ width: 'calc(100% - 120px)'}}>
       <Client className="w-12 text-primary" />
       <div>
        <p className="text-sm font-semibold">Your account has been approved!</p>
@@ -108,7 +107,7 @@ const DashboardPage: React.FC = () => {
       <Button className="ml-auto w-[128px] text-white h-[45px]">Share profile</Button>
      </div>
 
-     <div className="mt-4 flex h-[80px] w-[1108px] items-center gap-2 rounded-lg bg-destructive p-6">
+     <div className="mt-4 flex h-[80px]  items-center gap-2 rounded-lg bg-destructive p-6" style={{ width: 'calc(100% - 120px)'}}>
       <Clienttwo className="w-12 text-primary" />
       <div>
        <p className="text-sm font-semibold">Lorem ipsum dolor sit amet.</p>
@@ -119,8 +118,13 @@ const DashboardPage: React.FC = () => {
       <Button className="ml-auto w-[128px] text-white h-[45px]">Got it</Button>
      </div>
     </div>
-    {/* Upcoming Visits Table */}
-    <div className="ml-14 h-[291px] w-[1235px] rounded-md bg-ring p-3">
+    
+   </div>
+   
+  </div>
+  {/* Upcoming Visits Table */}
+  <div className="mx-auto mt-10 h-[full] border-t-2 border-gray-500 rounded-md bg-ring p-12 w-full" style={{ width: 'calc(100% - 112px)'}}>
+
      {/* Dropdown + Search */}
      <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
@@ -180,8 +184,8 @@ const DashboardPage: React.FC = () => {
       </TableBody>
      </Table>
     </div>
-   </div>
-  </div>
+  </>
+  
  );
 };
 
