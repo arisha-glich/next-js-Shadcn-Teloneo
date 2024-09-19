@@ -96,7 +96,7 @@ const DashboardPage: React.FC = () => {
      </div>
 
      {/* Status Messages */}
-     <div className="h-[80px]items-center mt-6 flex  gap-2 rounded-lg bg-destructive p-6" style={{ width: 'calc(100% - 120px)'}}>
+     <div className="h-[80px] items-center mt-6 flex  gap-2 rounded-lg bg-destructive p-6" style={{ width: 'calc(100% )'}}>
       <Client className="w-12 text-primary" />
       <div>
        <p className="text-sm font-semibold">Your account has been approved!</p>
@@ -107,7 +107,7 @@ const DashboardPage: React.FC = () => {
       <Button className="ml-auto w-[128px] text-white h-[45px]">Share profile</Button>
      </div>
 
-     <div className="mt-4 flex h-[80px]  items-center gap-2 rounded-lg bg-destructive p-6" style={{ width: 'calc(100% - 120px)'}}>
+     <div className="mt-4 flex h-[80px]  items-center gap-2 rounded-lg bg-destructive p-6" style={{ width: 'calc(100% )'}}>
       <Clienttwo className="w-12 text-primary" />
       <div>
        <p className="text-sm font-semibold">Lorem ipsum dolor sit amet.</p>
