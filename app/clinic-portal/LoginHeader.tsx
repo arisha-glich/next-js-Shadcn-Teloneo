@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import SvgLogo from '../../public/GreenLog.svg';
+import SvgLogo from '@/public/GreenLog.svg';
 import SuccessMessage from './SuccessMessage';
 
 const LoginHeader: React.FC = () => {

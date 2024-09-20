@@ -10,13 +10,13 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import Sidebar from '@/components/Reusables/SideBar'; // Assuming you have this sidebar component
-import VideoIcon from '../../public/patient/1.svg'; // Video icon
-import AttachIcon from '../../public/patient/3.svg'; // Attach icon
-import Arrow from '../../public/patient/4.svg';
-import Icon3 from '../../public/patient/5.svg';
-import Icon2 from '../../public/patient/2.svg';
-import Icon from '../../public/cards/clipboard-list-check-solid 1.svg';
-import Arrow2 from '../../public/arrow-right-solid 1.svg';
+import VideoIcon from '@/public/patient/1.svg'; // Video icon
+import AttachIcon from '@/public/patient/3.svg'; // Attach icon
+import Arrow from '@/public/patient/4.svg';
+import Icon3 from '@/public/patient/5.svg';
+import Icon2 from '@/public/patient/2.svg';
+import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
+import Arrow2 from '@/public/arrow-right-solid 1.svg';
 
 // Sample data for the patient table
 const patients = [
@@ -188,7 +188,7 @@ const patients = [
 const PatientTable = () => {
  // Pagination state
  const [currentPage, setCurrentPage] = useState(1);
- const patientsPerPage = 4;
+ const patientsPerPage = 7;
 
  // Calculate current patients based on pagination
  const indexOfLastPatient = currentPage * patientsPerPage;
@@ -205,27 +205,21 @@ const PatientTable = () => {
    {/* Sidebar */}
    <Sidebar />
    <div className="flex-grow p-12 pr-10">
-    <div
-     className="mx-auto flex h-[100] flex-col gap-4 pl-5"
-     style={{ width: 'calc(100% - 102px)' }}
-    >
+    <div className="mx-auto flex h-[100] w-[calc(100%-112px)] flex-col pl-5">
      <header className="mb-4 flex items-center justify-between">
-      <h1 className="text-2xl font-semibold">All Appointments</h1>
+      <h1 className="text-2xl font-semibold">All Appointmnents</h1>
       <Button variant="default" className="flex items-center space-x-2">
-       <Icon className="h-5 w-5" /> {/* Adjust size as needed */}
+       <Icon className="h-5 w-5" />
        <span>Waitlist</span>
       </Button>
      </header>
     </div>
 
-    <div
-     className="mx-auto flex h-[100] flex-col gap-4 pl-5"
-     style={{ width: 'calc(100% - 102px)' }}
-    ></div>
+    <div className="mx-auto flex h-[100] w-[calc(100%-102px)] flex-col gap-4 pl-5"></div>
 
     {/* Patient Table */}
-    <div className="mx-auto ml-10 flex h-[581px] flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground">
-     <div className="overflow-x-hidden">
+    <div className="mx-auto ml-10 flex h-[calc(100%)] w-[calc(100%)] flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-20 font-sans text-[12px] text-secondary-foreground">
+     <div className=" ">
       <header className="mb-4 flex items-center justify-between">
        {/* Filters */}
        <div className="flex items-center space-x-4">

@@ -9,9 +9,9 @@ import {
  TableCell,
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import Arrow from '../../../public/arrow-right-solid 2.svg';
-import Icon from '../../../public/cards/clipboard-list-check-solid 1.svg';
-import Icon2 from '../../../public/cards/arrow-right-solid 1.svg';
+import Arrow from '@/public/arrow-right-solid 2.svg';
+import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
+import Icon2 from '@/public/cards/arrow-right-solid 1.svg';
 
 // Sample data
 const contacts = [
@@ -242,7 +242,7 @@ const contacts = [
 const ContactTable = () => {
  // Pagination state
  const [currentPage, setCurrentPage] = useState(1);
- const contactsPerPage = 5;
+ const contactsPerPage = 7;
 
  // Calculate current contacts based on pagination
  const indexOfLastContact = currentPage * contactsPerPage;
@@ -258,8 +258,7 @@ const ContactTable = () => {
   <div className="flex">
    <div className="flex-grow p-12 pr-10">
     <div
-     className="mx-auto flex h-[100] flex-col gap-4 pl-5"
-     style={{ width: 'calc(100% - 102px)' }}
+     className="mx-auto flex h-[100] flex-col gap-4 pl-5 w-[calc(100%-120px)]"
     >
      <header className="mb-4 flex items-center justify-between">
       <h1 className="text-2xl font-semibold">Contact Us</h1>
@@ -270,8 +269,8 @@ const ContactTable = () => {
      </header>
     </div>
     <div
-     className="mx-auto ml-10 flex h-[581px] flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground"
-     style={{ width: 'calc(100%)' }}
+     className="mx-auto ml-10 flex  flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground w-[calc(100%)] h-[calc(100%)]"
+  
     >
      <div className="overflow-x-hidden">
       <Table className="w-full border-collapse">
@@ -310,10 +309,11 @@ const ContactTable = () => {
        {/* Previous Page Button */}
        <Button
         variant="outline"
-        className="h-[40px] w-[40px] bg-white p-1 hover:bg-gray-100"
+        className="flex h-[40px] w-[40px] items-center justify-center bg-white p-1 hover:bg-gray-100"
         onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
        >
-        <Icon2 width="10px" height="10px" />
+        <Icon2 width="24px" height="24px" />{' '}
+        {/* Adjusted icon size for centering */}
        </Button>
 
        {/* Page Number Buttons */}
@@ -322,7 +322,7 @@ const ContactTable = () => {
          key={i}
          variant="outline"
          onClick={() => setCurrentPage(i + 1)}
-         className={`h-[40px] w-[40px] p-1 ${
+         className={`flex h-[40px] w-[40px] items-center justify-center p-1 ${
           currentPage === i + 1 ? 'text-accent-foreground' : 'text-black'
          } hover:bg-gray-100`}
         >
@@ -333,10 +333,11 @@ const ContactTable = () => {
        {/* Next Page Button */}
        <Button
         variant="outline"
-        className="h-[40px] w-[40px] bg-primary p-1 hover:bg-gray-100"
+        className="flex h-[40px] w-[40px] items-center justify-center bg-primary p-1 hover:bg-gray-100"
         onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
        >
-        <Arrow width="10px" height="10px" />
+        <Arrow width="24px" height="24px" />{' '}
+
        </Button>
 
        {/* Page Info */}

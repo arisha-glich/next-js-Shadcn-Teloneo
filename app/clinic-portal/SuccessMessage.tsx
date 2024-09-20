@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation'; // Make sure this is imported correctly
 import { Button } from '../../components/ui/button'; // Adjust this import path to the actual location of your button component
-import SvgLogo from '../../public/GreenTick.svg';
+import SvgLogo from '@/public/GreenTick.svg';
 
 const SuccessMessage: React.FC = () => {
   const router = useRouter();

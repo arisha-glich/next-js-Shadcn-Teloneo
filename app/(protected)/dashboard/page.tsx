@@ -9,12 +9,12 @@ import {
  CardDescription,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import AppointmentsIcon from '../../../public/user.svg';
-import UpcomingIcon from '../../../public/secondcard.svg';
-import TotalActiveIcon from '../../../public/curvedline.svg';
-import TotalCompletedIcon from '../../../public/checkmark-done-circle-outline.svg';
-import ClockIcon from '../../../public/hours.svg';
-import FileReviewIcon from '../../../public/page.svg';
+import AppointmentsIcon from '@/public/user.svg';
+import UpcomingIcon from '@/public/secondcard.svg';
+import TotalActiveIcon from '@/public/curvedline.svg';
+import TotalCompletedIcon from '@/public/checkmark-done-circle-outline.svg';
+import ClockIcon from '@/public/hours.svg';
+import FileReviewIcon from '@/public/page.svg';
 import ClinicSupportForm from './ClinicSupportForm';
 import Modal from '@/components/ui/modal';
 
@@ -29,8 +29,8 @@ const DashboardPage: React.FC = () => {
 
  return (
   <div className="flex min-h-screen">
-   <div className="flex-grow p-8 ml-4" style={{ width: 'calc(100% - 112px)' }} >
-    <div className="mx-auto flex w-full  flex-col gap-4 " style={{ width: 'calc(100% - 150px)' }}>
+   <div className="ml-4 w-[calc(100%-110px)] flex-grow p-8">
+    <div className="mx-auto flex w-[calc(100%-150px)] flex-col gap-4">
      <header className="mb-4 flex items-center justify-between">
       <h1 className="text-2xl font-semibold">Welcome, ABC Clinic</h1>
       <div className="flex gap-2">

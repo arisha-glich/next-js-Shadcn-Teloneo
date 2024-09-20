@@ -5,7 +5,7 @@ import Sidebar from '@/components/Reusables/SideBar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card'; // shadcn card
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'; // shadcn avatar
-import Icon from '../../../public/cards/clipboard-list-check-solid 1.svg'; // Adjust this if you need to use next-image loader for SVG
+import Icon from '@/public/cards/clipboard-list-check-solid 1.svg'; // Adjust this if you need to use next-image loader for SVG
 
 const AppointmentDetails = ({ params }: { params: { id: string } }) => {
  const { id } = params; // Appointment ID from URL parameters
@@ -78,7 +78,7 @@ const AppointmentDetails = ({ params }: { params: { id: string } }) => {
         </h2>
         <span className="text-sm text-gray-500">Parent</span>
        </div>
-       <div className="ml-auto rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-500">
+       <div className="ml-auto rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-primary">
         Completed
        </div>
       </CardHeader>
@@ -124,7 +124,7 @@ const AppointmentDetails = ({ params }: { params: { id: string } }) => {
     );
    case 'doctor':
     return (
-     <Card className='bg-green-600 w-[1200px] h-[0px] p-7'>
+     <Card className="h-[0px] w-[1200px] bg-green-600 p-7">
       <CardHeader>
        <Avatar className="">
         <AvatarImage src="/path/to/doctor-image.jpg" alt="Doctor" />
@@ -201,7 +201,6 @@ const AppointmentDetails = ({ params }: { params: { id: string } }) => {
      </div>
 
      {/* Render the content based on the selected tab */}
-    
     </div>
     {renderContent()}
    </div>

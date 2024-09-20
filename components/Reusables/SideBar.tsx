@@ -16,6 +16,10 @@ type SidebarLink = 'dashboard' | 'patients' | 'appointments' | 'doctors' | 'paym
 export default function Sidebar() {
   const [activeLink, setActiveLink] = useState<SidebarLink>('dashboard'); // Default active link
 
+  const handleLinkClick = (link: SidebarLink) => {
+    setActiveLink(link);
+  };
+
   return (
     <div className="fixed left-0 top-0 flex h-screen w-[102px] flex-col justify-between border-r bg-white shadow-lg">
       <div className="p-4 t-[19px] left-[27px] items-center justify-center">
@@ -25,10 +29,8 @@ export default function Sidebar() {
       <nav className="flex flex-col items-center space-y-6">
         <Link
           href="/"
-          className={`group flex flex-col items-center  w-[83px] rounded-md hover:bg-gray-200 ${
-            activeLink === 'dashboard' ? 'bg-gray-200' : ''
-          }`}
-          onClick={() => setActiveLink('dashboard')}
+          className={`group flex flex-col items-center  w-[83px] rounded-md hover:bg-gray-200 ${activeLink === 'dashboard' ? 'bg-gray-200' : ''}`}
+          onClick={() => handleLinkClick('dashboard')}
         >
           <div className="flex h-[40px] w-[55px] items-center justify-center rounded-lg transition-all duration-200">
             <HomeIcon className="h-6 w-6 text-green-600 transition-all duration-200 group-hover:text-green-800" />
@@ -40,10 +42,8 @@ export default function Sidebar() {
 
         <Link
           href="/patients"
-          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${
-            activeLink === 'patients' ? 'bg-gray-200' : ''
-          }`}
-          onClick={() => setActiveLink('patients')}
+          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${activeLink === 'patients' ? 'bg-gray-200' : ''}`}
+          onClick={() => handleLinkClick('patients')}
         >
           <div className="flex h-[42px] w-[42px] items-center justify-center rounded-lg transition-all duration-200">
             <UsersIcon className="h-6 w-6 text-green-600 transition-all duration-200 group-hover:text-green-800" />
@@ -55,10 +55,8 @@ export default function Sidebar() {
 
         <Link
           href="/appointments"
-          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${
-            activeLink === 'appointments' ? 'bg-gray-200' : ''
-          }`}
-          onClick={() => setActiveLink('appointments')}
+          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${activeLink === 'appointments' ? 'bg-gray-200' : ''}`}
+          onClick={() => handleLinkClick('appointments')}
         >
           <div className="flex h-[42px] w-[39px] items-center justify-center rounded-lg transition-all duration-200">
             <CalendarIcon className="h-6 w-6 text-green-600 transition-all duration-200 group-hover:text-green-800" />
@@ -70,10 +68,8 @@ export default function Sidebar() {
 
         <Link
           href="/doctors"
-          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${
-            activeLink === 'doctors' ? 'bg-gray-200' : ''
-          }`}
-          onClick={() => setActiveLink('doctors')}
+          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${activeLink === 'doctors' ? 'bg-gray-200' : ''}`}
+          onClick={() => handleLinkClick('doctors')}
         >
           <div className="flex h-[40px] w-[55px] items-center justify-center rounded-lg transition-all duration-200">
             <DoctorsIcon className="h-6 w-6 text-green-600 transition-all duration-200 group-hover:text-green-800" />
@@ -85,10 +81,8 @@ export default function Sidebar() {
 
         <Link
           href="/payments"
-          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${
-            activeLink === 'payments' ? 'bg-gray-200' : ''
-          }`}
-          onClick={() => setActiveLink('payments')}
+          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${activeLink === 'payments' ? 'bg-gray-200' : ''}`}
+          onClick={() => handleLinkClick('payments')}
         >
           <div className="flex h-[40px] w-[50px] items-center justify-center rounded-lg transition-all duration-200">
             <PaymentsIcon className="h-6 w-6 text-green-600 transition-all duration-200 group-hover:text-green-800" />
@@ -100,10 +94,8 @@ export default function Sidebar() {
 
         <Link
           href="/contact"
-          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${
-            activeLink === 'contact' ? 'bg-gray-200' : ''
-          }`}
-          onClick={() => setActiveLink('contact')}
+          className={`group flex flex-col items-center hover:w-[83px] hover:rounded-md hover:bg-gray-200 ${activeLink === 'contact' ? 'bg-gray-200' : ''}`}
+          onClick={() => handleLinkClick('contact')}
         >
           <div className="flex h-[40px] w-[55px] items-center justify-center rounded-lg transition-all duration-200">
             <ContactIcon className="h-6 w-6 text-green-600 transition-all duration-200 group-hover:text-green-800" />
