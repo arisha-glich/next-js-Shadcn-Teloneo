@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'; 
 import SvgPath from '../../public/HalfLogo.svg';
 import HomeIcon from '../../public/dashboard.svg';
 import UsersIcon from '../../public/people.svg';
@@ -18,6 +19,11 @@ export default function Sidebar() {
 
   const handleLinkClick = (link: SidebarLink) => {
     setActiveLink(link);
+  };
+  const router = useRouter();
+
+  const goToNotifications = () => {
+    router.push('/notifications'); // Change this to the correct path
   };
 
   return (
@@ -107,11 +113,12 @@ export default function Sidebar() {
       </nav>
 
       <div className="flex flex-col items-center space-y-4 p-4">
-        <Notification
-          width={40}
-          height={40}
-          className="rounded-full hover:bg-gray-200 h-[39px] w-[39px]"
-        />
+      <Notification
+      width={40}
+      height={40}
+      className="rounded-full hover:zoom-in-95 h-[39px] w-[39px]"
+      onClick={goToNotifications} 
+    />
         <BrainIcon
           width={40}
           height={40}

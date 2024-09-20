@@ -16,8 +16,8 @@ export default function AppointmentDetails() {
  const [activeTab, setActiveTab] = useState('parent');
  const router = useRouter();
  const goToPatientPage = () => {
-    router.push('/patients'); // Replace with the actual route to the patient page
-  };
+  router.push('/patients'); // Replace with the actual route to the patient page
+ };
 
  return (
   <div className="flex h-screen p-0">
@@ -29,7 +29,7 @@ export default function AppointmentDetails() {
      <header className="mb-6 flex items-center justify-between p-6">
       <div className="flex items-center space-x-4">
        <Button variant="ghost" size="icon">
-        <ArrowLeft className="h-6 w-6 " onClick={goToPatientPage} />
+        <ArrowLeft className="h-6 w-6" onClick={goToPatientPage} />
        </Button>
        <h1 className="text-2xl font-bold">Appointment Details</h1>
       </div>
@@ -42,13 +42,13 @@ export default function AppointmentDetails() {
      </header>
 
      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-1">
-      <TabsList className="grid w-[calc(100%-100px)] grid-cols-3  bg-transparent p-0">
+      <TabsList className="grid w-[calc(100%-100px)] grid-cols-3 bg-transparent p-0">
        <TabsTrigger
         value="parent"
-        className={`rounded-t-lg border-b-2 px-4 py-2  ${
+        className={`rounded-t-lg border-b-2 px-4 py-2 ${
          activeTab === 'parent'
           ? 'border-orange-500 text-accent-foreground'
-          : ' border-transparent'
+          : 'border-transparent'
         }`}
        >
         Parent / Guardian
@@ -67,14 +67,14 @@ export default function AppointmentDetails() {
         value="doctor"
         className={`rounded-t-lg border-b-2 px-4 py-2 ${
          activeTab === 'doctor'
-          ? 'border-accent-foreground  text-accent-foreground'
-          : 'border-transparent '
+          ? 'border-accent-foreground text-accent-foreground'
+          : 'border-transparent'
         }`}
        >
         Doctor Info
        </TabsTrigger>
       </TabsList>
-      <Card className="h-[calc(100vh)] w-[calc(100vw)] mt-0 p-0 bg-gray-100">
+      <Card className="mt-0 h-[calc(100vh)] w-[calc(100vw)] bg-gray-100 p-0">
        <CardContent className="p-6">
         <TabsContent value="parent">
          <div className="mb-6 flex items-center justify-between">
