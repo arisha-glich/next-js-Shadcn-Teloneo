@@ -81,14 +81,14 @@ const DashboardPage: React.FC = () => {
 
       <Card className="h-[80px] w-[257px] border p-2">
        <CardContent className="flex items-center gap-2">
-        <TotalCompletedIcon className="h-6 w-6" />
+        <TotalCompletedIcon className="h-6 w-7" />
         <div className="flex h-[43px] w-[80px] flex-col justify-center">
          <CardTitle className="p-3 text-[18px] font-bold">1,823</CardTitle>
          <CardDescription className="text-[10px]">
-          Total Completed
+          Completed
          </CardDescription>
         </div>
-        <Cardthree className="h-17 w-15 m-2" />
+        <Cardthree className="h-17 w-20 m-2" />
        </CardContent>
       </Card>
      </div>

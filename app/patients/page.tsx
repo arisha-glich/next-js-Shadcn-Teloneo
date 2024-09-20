@@ -17,6 +17,7 @@ import Icon3 from '@/public/patient/5.svg';
 import Icon2 from '@/public/patient/2.svg';
 import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
 import Arrow2 from '@/public/arrow-right-solid 1.svg';
+import { useRouter } from 'next/navigation';
 
 // Sample data for the patient table
 const patients = [
@@ -199,6 +200,10 @@ const PatientTable = () => {
  );
 
  const totalPages = Math.ceil(patients.length / patientsPerPage);
+ const router = useRouter();
+ const goToPatientDetails = () => {
+  router.push('/patients/details'); // Navigate to /patient/details
+ };
 
  return (
   <div className="flex">
@@ -283,7 +288,7 @@ const PatientTable = () => {
                ? 'font-bold text-accent-foreground'
                : patient.status === 'Missed'
                  ? 'font-bold text-red-500'
-                 : 'font-bold text-orange-500'
+                 : 'font-bold text-accent-foreground'
            }`}
           >
            {patient.status}
@@ -307,7 +312,13 @@ const PatientTable = () => {
              <Icon2 className="h-26 w-30 text-primary" />
             </div>
            ) : (
+            <button
+            className="transform transition-transform duration-200 hover:scale-110" 
+            onClick={goToPatientDetails}
+          >
             <AttachIcon className="h-26 w-26 text-primary" />
+          </button>
+          
            )}
           </TableCell>
          </TableRow>
