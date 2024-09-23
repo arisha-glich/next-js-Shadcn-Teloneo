@@ -628,7 +628,6 @@ const columns: ColumnDef<(typeof doctorsData)[0]>[] = [
       className={`cursor-pointer ${original.isActive ? 'data-[active=active] text-primary' : 'text-gray-500'}`}
       data-active={original.isActive ? 'active' : undefined}
       onClick={() => {
-       // Logic to toggle the active status in the backend or state
       }}
      >
       {original.isActive ? (
