@@ -54,7 +54,7 @@ const InputField: React.FC<InputFieldProps> = ({
         type={type}
         {...register(name, { required })} // Register the input field
         placeholder={placeholder}
-        className={`w-full rounded-lg border px-4 py-2 text-[12px] text-secondary-foreground placeholder-secondary-foreground bg-secondary transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary ${
+        className={`w-full rounded-lg border px-4 py-2 text-[12px] text-secondary-foreground  transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary ${
           error ? 'border-red-500 focus:ring-red-500' : 'border-secondary'
         }`}
       />

@@ -50,7 +50,7 @@ export function DataTable<TData, TValue>({
  if (isLoading) return <TableLoading length={columns.length} />;
  return (
   <>
-   <div className="rounded-md border shadow-xl">
+   <div className="">
     <Table>
      <TableHeader>
       {table.getHeaderGroups().map((headerGroup, i) => (

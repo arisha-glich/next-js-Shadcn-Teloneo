@@ -83,7 +83,7 @@ export default function Notifications() {
         </header>
 
         {/* Scrollable Notifications Section */}
-        <ScrollArea className="flex-1 overflow-y-auto p-13 ml-[135px] w-[958px]"> {/* Changed overflow-y-visible to overflow-y-auto */}
+        <ScrollArea className="flex-1  p-13 ml-[135px] w-[958px]"> {/* Changed overflow-y-visible to overflow-y-auto */}
           {Object.keys(groupedNotifications).map((date) => (
             <div key={date} className="pb-4">
               <div className="mb-2 text-lg font-semibold text-gray-700">{date}</div>
