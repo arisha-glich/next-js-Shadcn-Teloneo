@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select';
 import DoctorTable from './DataTable';
 import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
 import Icon2 from '@/public/Doctors/adddoctor.svg';
@@ -37,16 +38,31 @@ const DashboardPage: React.FC = () => {
           <header className="mb-4 flex items-center justify-between">
             {/* Filters */}
             <div className="flex items-center space-x-4">
-              <select className="m-3 h-[35px] w-[198px] rounded border p-2 text-sm text-black">
-                <option>Current month</option>
-                <option>Previous month</option>
-                {/* Add more options */}
-              </select>
-              <select className="h-[35px] w-[198px] p-2 text-sm text-black">
-                <option>All</option>
-                <option>Missed</option>
-                <option>Completed</option>
-              </select>
+              {/* First Select (Month selection) */}
+              <Select>
+                <SelectTrigger className="m-3 h-[35px] w-[198px] rounded border p-2 text-sm text-black">
+                  <SelectValue placeholder="Current month" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="current-month">Current month</SelectItem>
+                  <SelectItem value="previous-month">Previous month</SelectItem>
+                  {/* Add more options if needed */}
+                </SelectContent>
+              </Select>
+
+              {/* Second Select (Status selection) */}
+              <Select>
+                <SelectTrigger className="h-[35px] w-[198px] p-2 text-sm text-black">
+                  <SelectValue placeholder="All" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All</SelectItem>
+                  <SelectItem value="missed">Missed</SelectItem>
+                  <SelectItem value="completed">Completed</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Text Input */}
               <input
                 type="text"
                 className="h-[35px] w-[198px] p-2 text-sm text-black"
@@ -54,6 +70,7 @@ const DashboardPage: React.FC = () => {
               />
             </div>
           </header>
+
           <div className="text-black">
             <DoctorTable />
           </div>

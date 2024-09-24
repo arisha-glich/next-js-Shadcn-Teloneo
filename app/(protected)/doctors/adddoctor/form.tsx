@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface FormState {
  step: number;
@@ -356,11 +357,7 @@ export default function ClinicSupportForm() {
 
       {/* Currently Working Checkbox */}
       <div className="flex items-center space-x-2">
-       <input
-        type="checkbox"
-        id="currentlyWorking"
-        className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-0"
-       />
+       <Checkbox id="currentlyWorking" />
        <label
         htmlFor="currentlyWorking"
         className="text-sm font-medium text-gray-700"
@@ -368,7 +365,6 @@ export default function ClinicSupportForm() {
         I am currently working here
        </label>
       </div>
-
       {/* Website */}
       <div>
        <label className="mb-1 block text-sm font-medium text-gray-700">

@@ -18,6 +18,7 @@ import Icon2 from '@/public/patient/2.svg';
 import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
 import Arrow2 from '@/public/arrow-right-solid 1.svg';
 import { useRouter } from 'next/navigation';
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select';
 
 // Sample data for the patient table
 const patients = [
@@ -225,26 +226,42 @@ const PatientTable = () => {
     {/* Patient Table */}
     <div className="mx-auto ml-10 flex h-[calc(100%)] w-[calc(100%)] flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-20 font-sans text-[12px] text-secondary-foreground">
      <div className=" ">
-      <header className="mb-4 flex items-center justify-between">
-       {/* Filters */}
-       <div className="flex items-center space-x-4">
-        <select className="m-3 h-[35px] w-[198px] rounded border p-2 text-[12px] text-black">
-         <option>Current month</option>
-         <option>Previous month</option>
-         {/* Add more options */}
-        </select>
-        <select className="h-[35px] w-[198px] rounded border p-2 text-[12px] text-black">
-         <option>All</option>
-         <option>Missed</option>
-         <option>Completed</option>
-        </select>
-        <input
-         type="text"
-         className="h-[35px] w-[198px] rounded border p-2 text-[12px] text-black"
-         placeholder="Patient name"
-        />
-       </div>
-      </header>
+     <header className="mb-4 flex items-center justify-between">
+  {/* Filters */}
+  <div className="flex items-center space-x-4">
+    
+    {/* First Select */}
+    <Select>
+      <SelectTrigger className="m-3 h-[35px] w-[198px] rounded border p-2 text-[12px] text-black">
+        <SelectValue placeholder="Current month" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="current-month">Current month</SelectItem>
+        <SelectItem value="previous-month">Previous month</SelectItem>
+        {/* Add more options */}
+      </SelectContent>
+    </Select>
+    
+    {/* Second Select */}
+    <Select>
+      <SelectTrigger className="h-[35px] w-[198px] rounded border p-2 text-[12px] text-black">
+        <SelectValue placeholder="All" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="all">All</SelectItem>
+        <SelectItem value="missed">Missed</SelectItem>
+        <SelectItem value="completed">Completed</SelectItem>
+      </SelectContent>
+    </Select>
+    
+    {/* Input Field */}
+    <input
+      type="text"
+      className="h-[35px] w-[198px] rounded border p-2 text-[12px] text-black"
+      placeholder="Patient name"
+    />
+  </div>
+</header>
       <Table className="w-full border-collapse">
        <TableHeader>
         <TableRow className="border-b-0">
