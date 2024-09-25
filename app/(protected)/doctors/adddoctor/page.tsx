@@ -12,16 +12,16 @@ const DashboardPage: React.FC = () => {
  return (
   <>
    <div className="m-8 flex-grow">
-    <div className="mx-auto flex h-[full] w-[calc(100%)] flex-col gap-4 pl-5">
+    <div className="mx-auto flex w-[calc(100%-112px)] flex-col gap-4">
      {/* Header Section */}
-     <header className="mb-4 flex w-[calc(100%-120px)] items-center justify-between">
+     <header className="mb-4 flex h-[full] w-[calc(100%-120px)] items-center justify-between">
       <div className="ml-12 flex items-center space-x-4">
        <Link href="/doctors">
         <Button variant="ghost" size="icon">
          <ArrowLeft className="h-6 w-12" />
         </Button>
        </Link>
-       <h1 className="text-2xl font-bold">Appointment Details</h1>
+       <h1 className="text-2xl font-bold">Add Doctor</h1>
       </div>
       <div className="flex gap-2">
        <Button variant="default" className="flex items-center space-x-2">
@@ -34,8 +34,8 @@ const DashboardPage: React.FC = () => {
        </Button>
       </div>
      </header>
-     <div className="mx-auto flex h-[900px] w-[calc(108%)] flex-col border-t-2 border-gray-300 bg-ring pl-20 font-sans text-[12px] text-secondary-foreground">
-        <ClinicSupportForm/>
+     <div className="mx-auto flex h-[1040px] w-[calc(108%)] flex-col border-t-2 border-gray-300 bg-ring pl-20 font-sans text-[12px] text-secondary-foreground">
+      <ClinicSupportForm />
      </div>
     </div>
    </div>

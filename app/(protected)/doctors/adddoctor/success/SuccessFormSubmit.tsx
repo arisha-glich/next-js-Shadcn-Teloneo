@@ -6,7 +6,7 @@ import SvgLogo from '@/public/GreenTick.svg';
 
 const SuccessFormSubmit: React.FC = () => {
  return (
-  <div className="flex h-screen flex-col items-center justify-center">
+  <div className="flex h-screen w-full flex-col items-center justify-center p-0">
    <SvgLogo className="w-45 mb-4 h-56" />
    <h2 className="mb-2 text-2xl font-semibold">Doctor Added Successfully!</h2>
    <p className="mb-6 text-gray-600">
