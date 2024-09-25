@@ -12,7 +12,7 @@ import Link from 'next/link';
 const DashboardPage: React.FC = () => {
   return (
     <div className="m-8 flex-grow">
-      <div className="mx-auto flex h-full w-full flex-col gap-4 pl-5">
+      <div className="mx-auto flex h-full w-full flex-col  pl-5">
         {/* Header Section */}
         <header className="mb-4 flex w-full items-center justify-between">
           <h1 className="ml-16 text-2xl font-semibold">Doctors</h1>

@@ -8,7 +8,13 @@ import {
  useReactTable,
 } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
-import { ArrowUpDown } from 'lucide-react';
+import {
+ ArrowUpDown,
+ ChevronLeft,
+ ChevronRight,
+ ChevronsLeft,
+ ChevronsRight,
+} from 'lucide-react';
 import {
  Table,
  TableBody,
@@ -20,12 +26,16 @@ import {
 import useSearchURL from '@/hooks/use-search-params';
 import { useEffect } from 'react';
 import TableLoading from './loading-table';
+import Arrow2 from '@/public/arrow-right-solid 1.svg';
+import Arrow from '@/public/patient/4.svg';
+
 interface ITable<TData, TValue> {
  columns: ColumnDef<TData, TValue>[];
  data: TData[];
  isLoading: boolean;
  enableSorting?: boolean;
 }
+
 export function DataTable<TData, TValue>({
  columns,
  data,
@@ -40,14 +50,25 @@ export function DataTable<TData, TValue>({
   getSortedRowModel: getSortedRowModel(),
   getFilteredRowModel: getFilteredRowModel(),
  });
+
  const { params } = useSearchURL();
  const tableSearch = params.get('qtable');
+
  useEffect(() => {
   if (tableSearch) {
    table.setGlobalFilter(tableSearch);
   }
  }, [table, tableSearch]);
+
  if (isLoading) return <TableLoading length={columns.length} />;
+
+ const totalItems = data.length;
+ const pageSize = table.getState().pagination.pageSize;
+ const currentPage = table.getState().pagination.pageIndex + 1;
+ const totalPages = table.getPageCount();
+ const rowStart = currentPage * pageSize - pageSize + 1;
+ const rowEnd = Math.min(rowStart + pageSize - 1, totalItems);
+
  return (
   <>
    <div className="">
@@ -104,31 +125,50 @@ export function DataTable<TData, TValue>({
      </TableBody>
     </Table>
    </div>
-   {data.length > 10 ? (
-    <div className="flex w-full flex-wrap items-center justify-end space-x-2 py-4">
-     <div className="flex-1 text-sm text-muted-foreground">
-      {table.getState().pagination.pageIndex + 1} / {table.getPageCount()}
-     </div>
-     <div className="space-x-2">
+   {totalItems > 10 && (
+    <div className="flex w-full flex-wrap items-center justify-between py-4">
+     {/* Pagination Controls */}
+     <div className="flex items-center space-x-2">
       <Button
        variant="outline"
        size="sm"
        onClick={() => table.previousPage()}
        disabled={!table.getCanPreviousPage()}
       >
-       Previous
+       <Arrow2 width="20px" height="20px" />
       </Button>
+
+      {/* Page Number Buttons */}
+      {Array.from({ length: totalPages }, (_, index) => (
+       <Button
+        key={index}
+        variant={currentPage === index + 1 ? 'default' : 'outline'}
+        size="sm"
+        onClick={() => table.setPageIndex(index)}
+       >
+        {index + 1}
+       </Button>
+      ))}
+
+      {/* Next Page Button */}
       <Button
        variant="outline"
        size="sm"
+       className="bg-primary hover:bg-primary"
        onClick={() => table.nextPage()}
        disabled={!table.getCanNextPage()}
       >
-       Next
+       <Arrow width="20px" height="20px" />
       </Button>
+
+      {/* Last Page Button */}
+      <div className="text-sm text-muted-foreground">
+       {rowStart} - {rowEnd} of {totalItems}
+      </div>
      </div>
+     {/* Row Range and Total Count */}
     </div>
-   ) : null}
+   )}
   </>
  );
 }
