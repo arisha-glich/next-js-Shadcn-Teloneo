@@ -23,11 +23,11 @@ export default function AppointmentDetails() {
     <div className="container mx-auto p-0">
      <header className="mb-0 flex items-center justify-between p-6">
       <div className="flex items-center space-x-4">
-       <Link href="/waitlist">
-        <Button variant="ghost" size="icon">
+       <Button variant="ghost" size="icon" asChild>
+        <Link href="/waitlist">
          <ArrowLeft className="h-6 w-6" />
-        </Button>
-       </Link>
+        </Link>
+       </Button>
        <h1 className="text-2xl font-bold">Waitlist Details</h1>
       </div>
       <Button variant="default" className="flex items-center space-x-2">

@@ -332,7 +332,7 @@ export default function WaitlistTable() {
  }, []);
 
  return (
-  <div className='ml-4'>
+  <div className="ml-4">
    <DataTable columns={columns} data={data} isLoading={isLoading} />
   </div>
  );
