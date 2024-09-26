@@ -25,10 +25,14 @@ const SuccessPage: React.FC = () => {
        <h1 className="text-2xl font-bold">Appointment Details</h1>
       </div>
       <div className="flex gap-2">
-       <Button variant="default" className="flex items-center space-x-2">
-        <Icon3 className="h-5 w-5" />
-        <span>Import Data</span>
-       </Button>
+      <Button variant="default" className="flex items-center space-x-2" asChild>
+      <Link href="doctors/adddoctor/import">
+        <span className="flex items-center space-x-2">
+          <Icon3 className="h-5 w-5" />
+          <span>Import Data</span>
+        </span>
+      </Link>
+    </Button>
        <Button variant="default" className="flex items-center space-x-2">
         <Icon className="h-5 w-5" />
         <span>Waitlist</span>

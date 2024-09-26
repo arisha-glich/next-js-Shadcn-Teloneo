@@ -10,10 +10,6 @@ import {
 import { Button } from '@/components/ui/button';
 import {
  ArrowUpDown,
- ChevronLeft,
- ChevronRight,
- ChevronsLeft,
- ChevronsRight,
 } from 'lucide-react';
 import {
  Table,

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -25,11 +25,11 @@ export default function AppointmentDetails() {
     <div className="container mx-auto p-0">
      <header className="mb-0 flex items-center justify-between p-6">
       <div className="flex items-center space-x-4">
-       <Link href="/patients">
-        <Button variant="ghost" size="icon">
+       <Button variant="ghost" size="icon" asChild>
+        <Link href="/appointments">
          <ArrowLeft className="h-6 w-6" />
-        </Button>
-       </Link>
+        </Link>
+       </Button>
        <h1 className="text-2xl font-bold">Appointment Details</h1>
       </div>
       <Button variant="default" className="hover:primary bg-primary text-white">

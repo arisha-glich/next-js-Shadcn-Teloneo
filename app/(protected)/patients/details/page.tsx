@@ -1,7 +1,7 @@
 'use client';
 
-import { ArrowLeft } from 'lucide-react';
 import { Avatar } from '@/components/ui/avatar';
+import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,7 +11,8 @@ import Sidebar from '@/components/Reusables/SideBar';
 import Avataricon from '@/public/patient/60111 [Converted]-01 2.svg';
 import Videoicon from '@/public/patient/video-light 1.svg';
 import Link from 'next/link';
-import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
+import Icon2 from '@/public/Doctors/adddoctor.svg'; // Replace with proper path
+import Icon3 from '@/public/Doctors/file.svg';
 
 export default function AppointmentDetails() {
  return (
@@ -20,20 +21,38 @@ export default function AppointmentDetails() {
     <Sidebar />
    </div>
    <div className="flex-grow overflow-hidden">
-    <div className="container mx-auto p-0 h-full flex flex-col">
-     <header className="flex items-center justify-between p-6">
+    <div className="container mx-auto flex h-full flex-col p-0">
+     <header className="mb-4 flex w-full items-center justify-between">
       <div className="flex items-center space-x-4">
        <Button variant="ghost" size="icon" asChild>
-        <Link href="/waitlist">
+        <Link href="/appointments">
          <ArrowLeft className="h-6 w-6" />
         </Link>
        </Button>
-       <h1 className="text-2xl font-bold">Waitlist Details</h1>
+       <h1 className="text-2xl font-bold">Patients Details</h1>
       </div>
-      <Button variant="default" className="flex items-center space-x-2">
-       <Icon className="h-5 w-5" />
-       <span>Waitlist</span>
-      </Button>
+      <div className="flex gap-2">
+       <Button
+        asChild
+        variant="default"
+        className="flex items-center space-x-2"
+       >
+        <Link href="doctors/adddoctor/import">
+         <Icon3 className="h-5 w-5" />
+         <span>Import Data</span>
+        </Link>
+       </Button>
+       <Button
+        asChild
+        variant="default"
+        className="ml-4 flex items-center space-x-2 bg-primary hover:bg-primary"
+       >
+        <Link href="/patients/details">
+         <Icon2 className="h-5 w-5" />
+         <span>Add Patient</span>
+        </Link>
+       </Button>
+      </div>
      </header>
 
      {/* Main Content */}
@@ -53,10 +72,10 @@ export default function AppointmentDetails() {
          Patient Info
         </TabsTrigger>
        </TabsList>
-       
+
        {/* Tabs Content */}
        <Card className="h-full bg-gray-100 p-0">
-        <CardContent className="h-full p-6 overflow-hidden">
+        <CardContent className="h-full overflow-hidden p-6">
          <TabsContent value="parent" className="h-full">
           <div className="mb-3 flex items-center justify-between">
            <div className="flex w-[546px] items-center space-x-4">
@@ -122,7 +141,7 @@ export default function AppointmentDetails() {
            </div>
           </div>
          </TabsContent>
-         
+
          {/* Patient Tab Content */}
          <TabsContent value="patient" className="h-full">
           <div className="mb-6 flex items-center justify-between">

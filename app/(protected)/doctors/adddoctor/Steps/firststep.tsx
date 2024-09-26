@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { z } from 'zod';
-import { Input } from '@/components/ui/input'; // Ensure this import path is correct
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import useFormStore from '@/stores/useFormStore'; 
 
 // Define the validation schema using Zod
 const formSchema = z.object({
@@ -20,6 +22,7 @@ const Step1: React.FC = () => {
     streetAddress: '',
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const { nextStep } = useFormStore();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,16 +32,19 @@ const Step1: React.FC = () => {
       ...prevData,
       [name]: value,
     }));
+
+    // Clear any previous error for the current field
+    setErrors(prevErrors => ({
+      ...prevErrors,
+      [name]: '', // Clear the error for the current field
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const validateForm = (data: typeof formData) => {
     try {
-      // Validate the form data
-      formSchema.parse(formData);
-      setErrors({}); // Clear errors if validation passes
-      // Proceed with form submission or further actions
-      console.log("Form submitted successfully:", formData);
+      // Validate the entire form data
+      formSchema.parse(data);
+      return null; // No errors
     } catch (err) {
       if (err instanceof z.ZodError) {
         const validationErrors: { [key: string]: string } = {};
@@ -47,9 +53,26 @@ const Step1: React.FC = () => {
             validationErrors[error.path[0]] = error.message;
           }
         });
-        setErrors(validationErrors); // Set errors state
+        return validationErrors; // Return the validation errors
       }
+      return null; // Fallback
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate the entire form data
+    const validationErrors = validateForm(formData);
+    
+    if (validationErrors) {
+      setErrors(validationErrors); // Set errors state
+      return; // Stop further processing if there are errors
+    }
+
+    // Proceed with form submission or further actions
+    console.log("Form submitted successfully:", formData);
+    nextStep(); // Call the next step function
   };
 
   return (
@@ -62,7 +85,7 @@ const Step1: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="First name"
-          className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white text-secondary-foreground placeholder-white placeholder:text-[12px] focus:border-primary focus:outline-none focus:ring-0"
+          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.firstName ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
         />
         {errors.firstName && <span className="text-red-500">{errors.firstName}</span>}
       </div>
@@ -75,7 +98,7 @@ const Step1: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="Last name"
-          className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white text-secondary-foreground placeholder-white placeholder:text-[12px] focus:border-primary focus:outline-none focus:ring-0"
+          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.lastName ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
         />
         {errors.lastName && <span className="text-red-500">{errors.lastName}</span>}
       </div>
@@ -88,7 +111,7 @@ const Step1: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="Email address"
-          className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white text-secondary-foreground placeholder-white placeholder:text-[12px] focus:border-primary focus:outline-none focus:ring-0"
+          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.email ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
         />
         {errors.email && <span className="text-red-500">{errors.email}</span>}
       </div>
@@ -101,7 +124,7 @@ const Step1: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="Phone number"
-          className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white text-secondary-foreground placeholder-white placeholder:text-[12px] focus:border-primary focus:outline-none focus:ring-0"
+          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.phone ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
         />
         {errors.phone && <span className="text-red-500">{errors.phone}</span>}
       </div>
@@ -114,11 +137,11 @@ const Step1: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="Street address"
-          className="mb-4 mt-4 h-[45px] w-full rounded-[7px] border-0 bg-white text-gray-400 placeholder:text-[12px] focus:border-primary focus:outline-none focus:ring-0"
+          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.streetAddress ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
         />
         {errors.streetAddress && <span className="text-red-500">{errors.streetAddress}</span>}
       </div>
-
+      
     </form>
   );
 };
