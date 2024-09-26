@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -14,23 +14,24 @@ import Icon2 from '@/public/Doctors/adddoctor.svg'; // Ensure this path is corre
 import Icon3 from '@/public/Doctors/file.svg'; // Ensure this path is correct
 import Link from 'next/link';
 import AddPatientModal from './AddPatientModal'; // Import the AddPatientModal component
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'; // Import Dialog components
 
 const DashboardPage: React.FC = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const dialogRef = useRef<HTMLDialogElement>(null); // Ref to control the dialog element
-
-  // Function to handle form submission
+  const [isDialogOpen, setIsDialogOpen] = useState(false); // State to control dialog visibility
 
   // Function to open the dialog
   const openDialog = () => {
     setIsDialogOpen(true);
-    dialogRef.current?.showModal();
   };
 
   // Function to close the dialog
   const closeDialog = () => {
     setIsDialogOpen(false);
-    dialogRef.current?.close();
   };
 
   return (
@@ -41,7 +42,7 @@ const DashboardPage: React.FC = () => {
           <h1 className="ml-16 text-2xl font-semibold">Patient</h1>
           <div className="flex gap-2">
             <Button asChild variant="default" className="flex items-center space-x-2">
-            <Link href="doctors/adddoctor/import">
+              <Link href="doctors/adddoctor/import">
                 <Icon3 className="h-5 w-5" />
                 <span>Import Data</span>
               </Link>
@@ -101,14 +102,21 @@ const DashboardPage: React.FC = () => {
       </div>
 
       {/* Add Patient Form Dialog */}
-      {isDialogOpen && (
-        <dialog ref={dialogRef} className="rounded-md p-6 bg-white w-[600px] shadow-xl">
-          <button onClick={closeDialog} className="float-right text-gray-500">
-            ✖️
-          </button>
-          <AddPatientModal />
-        </dialog>
-      )}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Add New Patient</DialogTitle>
+          </DialogHeader>
+          <AddPatientModal /> {/* Your patient form/modal content */}
+          <Button
+            type="button"
+            onClick={closeDialog}
+            className="mt-4 bg-primary text-white hover:bg-primary"
+          >
+            Close
+          </Button>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
