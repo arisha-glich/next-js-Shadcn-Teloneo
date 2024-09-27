@@ -61,7 +61,7 @@ export default function Step5() {
         <select
          {...field}
          required
-         className="h-[45px] w-full rounded-[7px] border border-gray-300 bg-white text-gray-700 focus:border-primary"
+         className="h-[45px] w-full p-2 rounded-[7px] border  border-gray-300 bg-white text-gray-700 focus:border-primary"
         >
          <option value="">Select Your Bank</option>
          <option value="Bank1">Bank 1</option>
@@ -87,7 +87,7 @@ export default function Step5() {
          type="text"
          required
          placeholder="Enter Your IBAN"
-         className="h-[45px] w-full rounded-[7px] border border-gray-300 bg-white text-gray-700 placeholder:text-[12px] focus:border-primary"
+         className="h-[45px] w-full rounded-[7px] border p-2 border-gray-300 bg-white text-gray-700 placeholder:text-[12px] focus:border-primary"
         />
         <FormMessage className="text-red-500" />
        </FormItem>
@@ -108,7 +108,7 @@ export default function Step5() {
          type="text"
          required
          placeholder="Enter Your Account Number"
-         className="h-[45px] w-full rounded-[7px] border border-gray-300 bg-white text-gray-700 placeholder:text-[12px] focus:border-primary"
+         className="h-[45px] w-full rounded-[7px] border p-2 border-gray-300 bg-white text-gray-700 placeholder:text-[12px] focus:border-primary"
         />
         <FormMessage className="text-red-500" />
        </FormItem>

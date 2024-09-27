@@ -1,129 +1,104 @@
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useFormContext, Controller } from 'react-hook-form';
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from '@/components/ui/form';
 
 export default function Step4() {
+  const formMethods = useFormContext(); // Access form methods
+
+  const inputClassName = (error: boolean) =>
+    `h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] p-4 focus:outline-none focus:ring-0 ${
+      error ? 'border-b-2 border-red-500' : 'border-gray-300'
+    }`;
+
+  const renderFormField = (name: string, type: string, placeholder: string, rows?: number) => (
+    <FormField
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel className='text-black'>{placeholder}</FormLabel>
+          <FormControl className='p-3'>
+            {type === 'textarea' ? (
+              <Controller
+                name={name}
+                control={formMethods.control}
+                render={({ field }) => (
+                  <textarea
+                    {...field}
+                    placeholder={placeholder}
+                    rows={rows}
+                    className={inputClassName(!!formMethods.formState.errors[name])}
+                  />
+                )}
+              />
+            ) : (
+              <Controller
+                name={name}
+                control={formMethods.control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    type={type}
+                    placeholder={placeholder}
+                    className={inputClassName(!!formMethods.formState.errors[name])}
+                  />
+                )}
+              />
+            )}
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+
   return (
     <div className="space-y-6">
-
-    {/* Institute Name */}
-    <div>
-     <label className="mb-1 block text-sm font-medium text-gray-700">
-      Institute name <span className="text-red-500">*</span>
-     </label>
-     <Input
-      type="text"
-      required
-      placeholder="Name of institute you have worked in"
-      className="h-[45px]  focus:border-primary w-full rounded-[7px] border border-gray-300 bg-white text-secondary-foreground placeholder:text-[12px]"
-     />
-    </div>
-
-    {/* Practice Name */}
-    <div>
-     <label className="mb-1 block text-sm font-medium text-gray-700">
-      Practice name <span className="text-red-500">*</span>
-     </label>
-     <Input
-      type="text"
-      required
-      placeholder="Name of practice"
-      className="h-[45px]  focus:border-primary w-full rounded-[7px] border border-gray-300 bg-white text-secondary-foreground placeholder:text-[12px]"
-     />
-    </div>
-
-    {/* Working From and To Dates */}
-    <div className="grid grid-cols-2 gap-4">
-     <div>
-      <label className="mb-1 block text-sm font-medium text-gray-700">
-       Working from <span className="text-red-500">*</span>
-      </label>
-      <Input
-       type="date"
-       required
-       className="h-[45px]   focus:border-primary w-full rounded-[7px] border border-gray-300 bg-white text-secondary-foreground"
+      {/* Form Fields */}
+      {renderFormField('instituteName', 'text', 'Name of institute you have worked in')}
+      {renderFormField('practiceName', 'text', 'Name of practice')}
+      <div className="grid grid-cols-2 gap-4">
+        {renderFormField('workingFrom', 'date', 'Working From')}
+        {renderFormField('workingTo', 'date', 'To')}
+      </div>
+      <FormField
+        name="currentlyWorking"
+        render={({ field }) => (
+          <FormItem>
+            <div className="flex items-center space-x-2">
+              <Controller
+                name="currentlyWorking"
+                control={formMethods.control}
+                render={({ field }) => (
+                  <Checkbox {...field} id="currentlyWorking" />
+                )}
+              />
+              <FormLabel htmlFor="currentlyWorking">I am currently working here</FormLabel>
+            </div>
+          </FormItem>
+        )}
       />
-     </div>
-
-     <div>
-      <label className="mb-1 block text-sm font-medium text-gray-700">
-       To <span className="text-gray-400">(optional)</span>
-      </label>
-      <Input
-       type="date"
-       className="h-[45px]  focus:border-primary w-full rounded-[7px] border border-gray-300 bg-white text-secondary-foreground"
-      />
-     </div>
+      {renderFormField('website', 'url', 'Website link of institute')}
+      {renderFormField('aboutPractice', 'textarea', 'Type here...', 4)}
+      {renderFormField('socialMediaLink1', 'url', 'Social Media Link 1')}
+      {renderFormField('socialMediaLink2', 'url', 'Social Media Link 2')}
+      <button type="button" className="mt-2 text-sm text-primary">+ Add another link</button>
+      {renderFormField('attachment', 'file', 'Upload your file')}
+      <button
+        type="button"
+        className="mt-4 w-full rounded-[7px] border border-gray-300 bg-white py-2 text-sm font-medium text-primary"
+        onClick={() => {
+          console.log('Add another experience triggered');
+        }}
+      >
+        + Add another experience
+      </button>
     </div>
-
-    {/* Currently Working Checkbox */}
-    <div className="flex items-center space-x-2">
-     <Checkbox id="currentlyWorking" />
-     <label
-      htmlFor="currentlyWorking"
-      className="text-sm font-medium text-gray-700"
-     >
-      I am currently working here
-     </label>
-    </div>
-    {/* Website */}
-    <div>
-     <label className="mb-1 block text-sm font-medium text-gray-700">
-      Website <span className="text-gray-400">(optional)</span>
-     </label>
-     <Input
-      type="url"
-      placeholder="Website link of institute"
-      className="h-[45px]  focus:border-primary w-full rounded-[7px] border border-gray-300 bg-white text-secondary-foreground placeholder:text-[12px]"
-     />
-    </div>
-
-    {/* About Practice */}
-    <div>
-     <label className="mb-1 block text-sm font-medium text-gray-700">
-      About practice
-     </label>
-     <textarea
-      placeholder="Type here..."
-      rows={4}
-      className="w-full  focus:border-primary rounded-[7px] border border-gray-300 bg-white p-2 text-secondary-foreground placeholder:text-[12px]"
-     />
-    </div>
-
-    {/* Social Media Links */}
-    <div>
-     <label className="mb-1 block text-sm font-medium text-gray-700">
-      Social media link
-     </label>
-     <Input
-      type="url"
-      placeholder="Link 1"
-      className="h-[45px]  focus:border-primary w-full rounded-[7px] border border-gray-300 bg-white text-secondary-foreground placeholder:text-[12px]"
-     />
-
-     <button type="button" className="mt-2 text-sm text-primary">
-      + Add another link
-     </button>
-    </div>
-
-    {/* Attachment Upload */}
-    <div>
-     <label className="mb-1 block text-sm font-medium text-gray-700">
-      Attachment <span className="text-gray-400">(optional)</span>
-     </label>
-     <Input
-      type="file"
-      className="h-[45px]  focus:border-primary w-full rounded-[7px] border border-gray-300 bg-white text-secondary-foreground placeholder:text-[12px]"
-     />
-    </div>
-
-    {/* Add Another Experience Button */}
-    <div>
-     <button
-      type="button"
-      className="mt-4 w-full  rounded-[7px] border border-gray-300 bg-white py-2 text-sm font-medium text-primary"
-     >
-      + Add another experience
-     </button>
-    </div>
-   </div>
-  )}
+  );
+}
