@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { DataTable } from '@/components/table/react-table'; // Ensure you have a DataTable component
-import { Switch } from '@/components/ui/switch'; // Assuming you have a Switch component
-import InfoIcon from '@/public/3dots.svg'; // Example info icon
+import Link from 'next/link';
 
 // Example payment data
 const initialPaymentData = [
@@ -296,17 +295,20 @@ const columns: ColumnDef<(typeof initialPaymentData)[0]>[] = [
   },
  },
  {
-  header: 'Action',
-  cell: ({ row }) => {
-   return (
-    <div className="flex items-center space-x-4 text-primary">
-     {/* Button to Pay Doctor */}
-     View Details
-     {/* View Details Button */}
-    </div>
-   );
-  },
- },
+    header: 'Action',
+    cell: ({ row }) => {
+      return (
+        <div className="flex items-center space-x-4 text-primary">
+          {/* View Details Button */}
+          <Link href={'/payments/details'} className="text-primary hover:underline">
+            View Details
+          </Link>
+        </div>
+      );
+    },
+  }
+  
+  
 ];
 
 // Main Payment Table Component
