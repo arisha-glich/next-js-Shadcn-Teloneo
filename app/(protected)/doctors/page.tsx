@@ -17,11 +17,11 @@ import Link from 'next/link';
 
 const DashboardPage: React.FC = () => {
  return (
-  <div className="m-8 flex-grow">
-   <div className="mx-auto flex h-full w-full flex-col pl-5">
+  <div className=" flex-grow">
+   <div className="mx-auto m-8 flex h-full w-full flex-col pl-5">
     {/* Header Section */}
     <header className="mb-4 flex w-full items-center justify-between">
-     <h1 className="ml-16 text-2xl font-semibold">Doctors</h1>
+     <h1 className="ml-[6.5rem] text-2xl font-semibold">Doctors</h1>
      <div className="flex gap-2">
       <Link href="/doctors/adddoctor">
        <Button
@@ -46,7 +46,6 @@ const DashboardPage: React.FC = () => {
       </Button>
      </div>
     </header>
-
     <div className="mx-auto flex h-full w-full flex-col border-t-2 border-gray-300 bg-ring pl-20 font-sans text-sm text-secondary-foreground">
      <header className="mb-4 flex items-center justify-between">
       {/* Filters */}
@@ -83,7 +82,6 @@ const DashboardPage: React.FC = () => {
        />
       </div>
      </header>
-
      <div className="text-black">
       <DoctorTable />
      </div>

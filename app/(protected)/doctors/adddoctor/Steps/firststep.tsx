@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import { z } from 'zod';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import useFormStore from '@/stores/useFormStore'; 
+import useFormStore from '@/stores/useFormStore';
 
 // Define the validation schema using Zod
 const formSchema = z.object({
@@ -13,136 +23,139 @@ const formSchema = z.object({
   streetAddress: z.string().min(1, "Street address is required"),
 });
 
+type FormData = z.infer<typeof formSchema>;
+
 const Step1: React.FC = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    streetAddress: '',
-  });
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { nextStep } = useFormStore();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const formMethods = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
 
-    // Clear any previous error for the current field
-    setErrors(prevErrors => ({
-      ...prevErrors,
-      [name]: '', // Clear the error for the current field
-    }));
-  };
-
-  const validateForm = (data: typeof formData) => {
-    try {
-      // Validate the entire form data
-      formSchema.parse(data);
-      return null; // No errors
-    } catch (err) {
-      if (err instanceof z.ZodError) {
-        const validationErrors: { [key: string]: string } = {};
-        err.errors.forEach(error => {
-          if (error.path.length > 0) {
-            validationErrors[error.path[0]] = error.message;
-          }
-        });
-        return validationErrors; // Return the validation errors
-      }
-      return null; // Fallback
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Validate the entire form data
-    const validationErrors = validateForm(formData);
-    
-    if (validationErrors) {
-      setErrors(validationErrors); // Set errors state
-      return; // Stop further processing if there are errors
-    }
-
-    // Proceed with form submission or further actions
-    console.log("Form submitted successfully:", formData);
+  const handleSubmit = async (data: FormData) => {
+    setIsLoading(true);
+    // Simulate an asynchronous action (like an API call)
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log("Form submitted successfully:", data);
     nextStep(); // Call the next step function
+    setIsLoading(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <Input
-          type="text"
+    <Form {...formMethods}>
+      <form onSubmit={formMethods.handleSubmit(handleSubmit)} className="space-y-4">
+        
+        {/* First Name Field */}
+        <FormField
+          control={formMethods.control}
           name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-          placeholder="First name"
-          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.firstName ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>First Name</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder="First name"
+                  disabled={isLoading}
+                  className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.firstName ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+                />
+              </FormControl>
+              <FormMessage>{formMethods.formState.errors.firstName?.message}</FormMessage>
+            </FormItem>
+          )}
         />
-        {errors.firstName && <span className="text-red-500">{errors.firstName}</span>}
-      </div>
-
-      <div>
-        <Input
-          type="text"
+        
+        {/* Last Name Field */}
+        <FormField
+          control={formMethods.control}
           name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-          placeholder="Last name"
-          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.lastName ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Last Name</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder="Last name"
+                  disabled={isLoading}
+                  className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.lastName ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+                />
+              </FormControl>
+              <FormMessage>{formMethods.formState.errors.lastName?.message}</FormMessage>
+            </FormItem>
+          )}
         />
-        {errors.lastName && <span className="text-red-500">{errors.lastName}</span>}
-      </div>
 
-      <div>
-        <Input
-          type="email"
+        {/* Email Field */}
+        <FormField
+          control={formMethods.control}
           name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          placeholder="Email address"
-          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.email ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email Address</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="email"
+                  placeholder="Email address"
+                  disabled={isLoading}
+                  className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.email ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+                />
+              </FormControl>
+              <FormMessage>{formMethods.formState.errors.email?.message}</FormMessage>
+            </FormItem>
+          )}
         />
-        {errors.email && <span className="text-red-500">{errors.email}</span>}
-      </div>
 
-      <div>
-        <Input
-          type="text"
+        {/* Phone Number Field */}
+        <FormField
+          control={formMethods.control}
           name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-          placeholder="Phone number"
-          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.phone ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone Number</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder="Phone number"
+                  disabled={isLoading}
+                  className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.phone ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+                />
+              </FormControl>
+              <FormMessage>{formMethods.formState.errors.phone?.message}</FormMessage>
+            </FormItem>
+          )}
         />
-        {errors.phone && <span className="text-red-500">{errors.phone}</span>}
-      </div>
 
-      <div>
-        <Input
-          type="text"
+        {/* Street Address Field */}
+        <FormField
+          control={formMethods.control}
           name="streetAddress"
-          value={formData.streetAddress}
-          onChange={handleChange}
-          required
-          placeholder="Street address"
-          className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${errors.streetAddress ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Street Address</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder="Street address"
+                  disabled={isLoading}
+                  className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.streetAddress ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+                />
+              </FormControl>
+              <FormMessage>{formMethods.formState.errors.streetAddress?.message}</FormMessage>
+            </FormItem>
+          )}
         />
-        {errors.streetAddress && <span className="text-red-500">{errors.streetAddress}</span>}
-      </div>
-      
-    </form>
+
+        <Button className="w-full" type="submit" disabled={isLoading}>
+          Submit
+        </Button>
+      </form>
+    </Form>
   );
 };
 

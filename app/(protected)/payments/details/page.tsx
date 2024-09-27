@@ -24,7 +24,7 @@ const DashboardPage: React.FC = () => {
 
     {/* Main Content Section */}
     <div className="mx-auto flex h-full w-[101%] flex-col border-t-2 border-gray-300 bg-ring p-5 pl-20 font-sans text-sm text-secondary-foreground">
-     <div className="text-black">
+    <div className="mx-auto flex h-full w-full flex-col border-t-2 p-5 border-gray-300 bg-ring pl-20 font-sans text-sm text-secondary-foreground">
       <PaymentDetails />
      </div>
     </div>
