@@ -39,7 +39,7 @@ const ImportComponent: React.FC = () => {
      </div>
     </header>
 
-    <div className=" text-black ">
+    <div className="mx-auto flex h-full w-full flex-col border-t-2 p-5 border-gray-300 bg-ring pl-20 font-sans text-sm text-secondary-foreground">
      <FileUpload />
     </div>
    </div>
