@@ -1,161 +1,190 @@
+'use client';
 import React, { useState } from 'react';
 import { z } from 'zod';
 import {
- Form,
- FormControl,
- FormField,
- FormItem,
- FormLabel,
- FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
 } from '@/components/ui/form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import useFormStore from '@/stores/useFormStore';
+import useToast from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
+import useFormStore from '@/stores/useFormStore'; // Import your Zustand store
 
-// Define the validation schema using Zod
-const formSchema = z.object({
- firstName: z.string().min(1, 'First name is required'),
- lastName: z.string().min(1, 'Last name is required'),
- email: z.string().email('Invalid email address'),
- phone: z.string().min(10, 'Phone number must be at least 10 characters'),
- streetAddress: z.string().min(1, 'Street address is required'),
+// Step 1 schema with validation for form fields
+const step1Schema = z.object({
+  firstName: z.string().nonempty('First name is required'),
+  lastName: z.string().nonempty('Last name is required'),
+  email: z.string().email('Invalid email address').nonempty('Email is required'),
+  phoneNumber: z.string().nonempty('Phone number is required'),
+  streetAddress: z.string().nonempty('Street address is required'),
 });
 
-type FormData = z.infer<typeof formSchema>;
+type Step1FormType = z.infer<typeof step1Schema>;
 
-const Step1: React.FC = () => {
- const [isLoading, setIsLoading] = useState<boolean>(false);
- const { nextStep } = useFormStore();
+export default function Step1() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
+  const { toastError, toastSuccess } = useToast();
+  const { saveData, nextStep } = useFormStore(); // Get methods from Zustand store
 
- const formMethods = useForm<FormData>({
-  resolver: zodResolver(formSchema),
- });
+  const form = useForm<Step1FormType>({
+    resolver: zodResolver(step1Schema),
+  });
 
- const handleSubmit = async (data: FormData) => {
-  setIsLoading(true);
-  // Simulate an asynchronous action (like an API call)
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  console.log('Form submitted successfully:', data);
-  nextStep(); // Call the next step function
-  setIsLoading(false);
- };
+  // Handle form submission
+  function handleSubmit(data: Step1FormType) {
+    setIsLoading(true);
 
- return (
-  <Form {...formMethods}>
-   <form
-    onSubmit={formMethods.handleSubmit(handleSubmit)}
-    className="space-y-4"
-   >
-    {/* First Name Field */}
-    <FormField
-     control={formMethods.control}
-     name="firstName"
-     render={({ field }) => (
-      <FormItem>
-       <FormControl>
-        <Input
-         {...field}
-         type="text"
-         placeholder="First name"
-         disabled={isLoading}
-         className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.firstName ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+    // Simulate a submission action here (e.g., API call)
+    setTimeout(() => {
+      // Save the data to Zustand store
+      saveData({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+        streetAddress: data.streetAddress,
+      });
+
+      toastSuccess('Step 1 completed successfully!');
+      nextStep(); // Move to the next step
+      setIsLoading(false);
+    }, 1000);
+  }
+
+  // Handle form cancellation
+  function handleCancel() {
+    router.push('/'); // Navigate to a specific route when canceling
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+        
+        {/* First Name */}
+        <FormField
+          control={form.control}
+          name="firstName"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl className="bg-white border-none">
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder="Enter first name"
+                  disabled={isLoading}
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
         />
-       </FormControl>
-       <FormMessage>
-        {formMethods.formState.errors.firstName?.message}
-       </FormMessage>
-      </FormItem>
-     )}
-    />
 
-    {/* Last Name Field */}
-    <FormField
-     control={formMethods.control}
-     name="lastName"
-     render={({ field }) => (
-      <FormItem>
-       <FormControl>
-        <Input
-         {...field}
-         type="text"
-         placeholder="Last name"
-         disabled={isLoading}
-         className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.lastName ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+        {/* Last Name */}
+        <FormField
+          control={form.control}
+          name="lastName"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl className="bg-white border-none">
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder="Enter last name"
+                  disabled={isLoading}
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
         />
-       </FormControl>
-       <FormMessage>
-        {formMethods.formState.errors.lastName?.message}
-       </FormMessage>
-      </FormItem>
-     )}
-    />
 
-    {/* Email Field */}
-    <FormField
-     control={formMethods.control}
-     name="email"
-     render={({ field }) => (
-      <FormItem>
-       <FormControl>
-        <Input
-         {...field}
-         type="email"
-         placeholder="Email address"
-         disabled={isLoading}
-         className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.email ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+        {/* Email */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl className="bg-white border-none">
+                <Input
+                  {...field}
+                  type="email"
+                  placeholder="Enter email address"
+                  disabled={isLoading}
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
         />
-       </FormControl>
-       <FormMessage>{formMethods.formState.errors.email?.message}</FormMessage>
-      </FormItem>
-     )}
-    />
 
-    {/* Phone Number Field */}
-    <FormField
-     control={formMethods.control}
-     name="phone"
-     render={({ field }) => (
-      <FormItem>
-       <FormControl>
-        <Input
-         {...field}
-         type="text"
-         placeholder="Phone number"
-         disabled={isLoading}
-         className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.phone ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+        {/* Phone Number */}
+        <FormField
+          control={form.control}
+          name="phoneNumber"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl className="bg-white border-none">
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder="Enter phone number"
+                  disabled={isLoading}
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
         />
-       </FormControl>
-       <FormMessage>{formMethods.formState.errors.phone?.message}</FormMessage>
-      </FormItem>
-     )}
-    />
 
-    {/* Street Address Field */}
-    <FormField
-     control={formMethods.control}
-     name="streetAddress"
-     render={({ field }) => (
-      <FormItem>
-       <FormControl>
-        <Input
-         {...field}
-         type="text"
-         placeholder="Street address"
-         disabled={isLoading}
-         className={`mb-4 h-[45px] w-full rounded-[7px] border-0 bg-white placeholder:text-[12px] focus:outline-none focus:ring-0 ${formMethods.formState.errors.streetAddress ? 'border-b-2 border-red-500' : 'border-gray-300'}`}
+        {/* Street Address */}
+        <FormField
+          control={form.control}
+          name="streetAddress"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl className="bg-white border-none">
+                <Input
+                  {...field}
+                  type="text"
+                  placeholder="Enter street address"
+                  disabled={isLoading}
+                />
+              </FormControl>
+              <FormMessage className="text-red-500" />
+            </FormItem>
+          )}
         />
-       </FormControl>
-       <FormMessage>
-        {formMethods.formState.errors.streetAddress?.message}
-       </FormMessage>
-      </FormItem>
-     )}
-    />
-   </form>
-  </Form>
- );
-};
 
-export default Step1;
+
+        {/* Buttons */}
+        <div className="flex justify-between">
+          {/* Cancel Button */}
+          <Button
+            type="button"
+            onClick={handleCancel}
+            disabled={isLoading}
+            className="bg-white text-primary hover:bg-gray-100"
+          >
+            Cancel
+          </Button>
+
+          {/* Submit Button */}
+          <Button
+            className="w-[231px] bg-primary text-white"
+            type="submit"
+            loading={isLoading}
+          >
+            Next
+          </Button>
+        </div>
+      </form>
+    </Form>
+  );
+}

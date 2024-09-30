@@ -12,6 +12,8 @@ import {
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
+import useFormStore from '@/stores/useFormStore';
+import { useRouter } from 'next/router';
 
 // Define validation schema
 const bankInfoSchema = z.object({
@@ -24,20 +26,35 @@ type BankInfoType = z.infer<typeof bankInfoSchema>;
 
 export default function Step5() {
  const [isLoading, setIsLoading] = useState<boolean>(false);
+ const [isSubmitted, setIsSubmitted] = useState<boolean>(false); // Track submission state
+ const { saveData, formData, prevStep } = useFormStore();
+ const router = useRouter();
 
  // Initialize form with validation schema
  const form = useForm<BankInfoType>({
   resolver: zodResolver(bankInfoSchema),
+  defaultValues: {
+   selectedBank: formData.selectedBank,
+   iban: formData.iban,
+   accountNumber: formData.accountNumber,
+  },
  });
 
  // Handle form submission
  const handleSubmit = async (data: BankInfoType) => {
   setIsLoading(true);
+
+  // Save data to Zustand store
+  saveData(data);
+
   // Simulating an API call
   setTimeout(() => {
    console.log('Bank Info Submitted:', data);
    setIsLoading(false);
-   // Reset form or show success message
+   setIsSubmitted(true); // Mark as submitted
+
+   // Redirect to success page immediately
+   router.push('/doctors/adddoctors/success');
   }, 1000);
  };
 
@@ -61,7 +78,7 @@ export default function Step5() {
         <select
          {...field}
          required
-         className="h-[45px] w-full p-2 rounded-[7px] border  border-gray-300 bg-white text-gray-700 focus:border-primary"
+         className="h-[45px] w-full rounded-[7px] border border-gray-300 bg-white p-2 text-gray-700 focus:border-primary"
         >
          <option value="">Select Your Bank</option>
          <option value="Bank1">Bank 1</option>
@@ -87,7 +104,7 @@ export default function Step5() {
          type="text"
          required
          placeholder="Enter Your IBAN"
-         className="h-[45px] w-full rounded-[7px] border p-2 border-gray-300 bg-white text-gray-700 placeholder:text-[12px] focus:border-primary"
+         className="h-[45px] w-full rounded-[7px] border border-gray-300 bg-white p-2 text-gray-700 placeholder:text-[12px] focus:border-primary"
         />
         <FormMessage className="text-red-500" />
        </FormItem>
@@ -108,12 +125,32 @@ export default function Step5() {
          type="text"
          required
          placeholder="Enter Your Account Number"
-         className="h-[45px] w-full rounded-[7px] border p-2 border-gray-300 bg-white text-gray-700 placeholder:text-[12px] focus:border-primary"
+         className="h-[45px] w-full rounded-[7px] border border-gray-300 bg-white p-2 text-gray-700 placeholder:text-[12px] focus:border-primary"
         />
         <FormMessage className="text-red-500" />
        </FormItem>
       )}
      />
+
+     <div className="mt-6 flex justify-between">
+      {/* Prev Button */}
+      <button
+       type="button"
+       onClick={prevStep}
+       className="bg-white text-primary hover:bg-gray-100"
+      >
+       Prev
+      </button>
+
+      {/* Submit Button */}
+      <button
+       type="submit"
+       disabled={isLoading}
+       className="w-[231px] bg-primary text-white"
+      >
+       {isLoading ? 'Submitting...' : 'Submit'}
+      </button>
+     </div>
     </form>
    </Form>
   </div>
