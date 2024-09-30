@@ -61,13 +61,13 @@ export default function AppointmentDetails() {
        <TabsList className="grid grid-cols-6 bg-transparent p-0">
         <TabsTrigger
          value="parent"
-         className="rounded-t-lg border-b-2 border-orange-500 px-4 py-2 text-accent-foreground"
+         className=" border-b-2 px-4 py-2 text-black data-[state=active]:border-accent-foreground data-[state=active]:text-accent-foreground"
         >
          Parent / Guardian
         </TabsTrigger>
         <TabsTrigger
          value="patient"
-         className="rounded-t-lg border-b-2 border-transparent px-4 py-2"
+         className=" border-b-2 border-transparent px-4 py-2 text-black data-[state=active]:border-accent-foreground data-[state=active]:text-accent-foreground"
         >
          Patient Info
         </TabsTrigger>
@@ -214,7 +214,7 @@ export default function AppointmentDetails() {
             <Input
              type="text"
              id="psychCondition"
-             value="Stress"
+             value="ADHD"
              readOnly
              className="w-400 border-none p-0 text-[13px] text-gray-900 shadow-none focus:ring-0"
             />

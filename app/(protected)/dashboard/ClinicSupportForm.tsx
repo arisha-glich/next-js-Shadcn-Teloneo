@@ -29,7 +29,7 @@ interface FormActions {
  prevStep: () => void;
  setStep: (step: number) => void;
  setSuccess: (success: boolean) => void;
- setFormData: (data: Partial<FormData>) => void; // Only update part of the form data
+ setFormData: (data: Partial<FormData>) => void; 
 }
 
 // Zustand store to manage form state

@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import Sidebar from '@/components/Reusables/SideBar';
 import Avataricon from '@/public/patient/60111 [Converted]-01 2.svg';
 import Link from 'next/link';
+import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
 
 export default function AppointmentDetails() {
  const [activeTab, setActiveTab] = useState('parent');
@@ -23,7 +24,7 @@ export default function AppointmentDetails() {
    </div>
    <div className="overflow-hidden">
     <div className="container mx-auto p-0">
-     <header className="mb-0 flex items-center justify-between p-6">
+     <header className="mb-0 flex items-center justify-between p-6 mt-1">
       <div className="flex items-center space-x-4">
        <Button variant="ghost" size="icon" asChild>
         <Link href="/appointments">
@@ -32,8 +33,15 @@ export default function AppointmentDetails() {
        </Button>
        <h1 className="text-2xl font-bold">Appointment Details</h1>
       </div>
-      <Button variant="default" className="hover:primary bg-primary text-white">
-       Waitlist
+      <Button variant="default" className="flex items-center space-x-2" asChild>
+       <Link href="/waitlist">
+        {' '}
+        {/* Link added for navigation */}
+        <div className="flex items-center">
+         <Icon className="h-5 w-5" />
+         <span>Waitlist</span>
+        </div>
+       </Link>
       </Button>
      </header>
 
@@ -41,7 +49,7 @@ export default function AppointmentDetails() {
       <TabsList className="grid w-[calc(100%-100px)] grid-cols-6 bg-transparent p-0">
        <TabsTrigger
         value="parent"
-        className={`rounded-t-lg border-b-2 px-4 py-2 ${
+        className={` border-b-2 px-4 py-2 ${
          activeTab === 'parent'
           ? 'border-orange-500 text-accent-foreground'
           : 'border-transparent'
@@ -51,7 +59,7 @@ export default function AppointmentDetails() {
        </TabsTrigger>
        <TabsTrigger
         value="patient"
-        className={`rounded-t-lg border-b-2 px-4 py-2 ${
+        className={` border-b-2 px-4 py-2 ${
          activeTab === 'patient'
           ? 'border-accent-foreground text-accent-foreground'
           : 'border-transparent'
@@ -61,7 +69,7 @@ export default function AppointmentDetails() {
        </TabsTrigger>
        <TabsTrigger
         value="doctor"
-        className={`rounded-t-lg border-b-2 px-4 py-2 ${
+        className={` border-b-2 px-4 py-2 ${
          activeTab === 'doctor'
           ? 'border-accent-foreground text-accent-foreground'
           : 'border-transparent'

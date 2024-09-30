@@ -71,7 +71,7 @@ const DashboardPage: React.FC = () => {
               />
             </div>
           </header>
-          <div className="mx-auto flex h-full w-full flex-col border-t-2 p-5 border-gray-300 bg-ring pl-20 font-sans text-sm text-secondary-foreground">
+          <div className="mx-auto flex h-full w-full flex-col p-2 bg-ring pl-15 font-sans text-sm text-secondary-foreground">
             <WaitlistTable />
           </div>
         </div>

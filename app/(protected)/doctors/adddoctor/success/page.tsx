@@ -33,10 +33,16 @@ const SuccessPage: React.FC = () => {
         </span>
       </Link>
     </Button>
-       <Button variant="default" className="flex items-center space-x-2">
-        <Icon className="h-5 w-5" />
-        <span>Waitlist</span>
-       </Button>
+    <Button variant="default" className="flex items-center space-x-2" asChild>
+       <Link href="/waitlist">
+        {' '}
+        {/* Link added for navigation */}
+        <div className="flex items-center">
+         <Icon className="h-5 w-5" />
+         <span>Waitlist</span>
+        </div>
+       </Link>
+      </Button>
       </div>
      </header>
 

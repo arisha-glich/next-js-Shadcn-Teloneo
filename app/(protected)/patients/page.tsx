@@ -59,7 +59,7 @@ const DashboardPage: React.FC = () => {
         </header>
 
         {/* Main Content */}
-        <div className="mx-auto flex h-full w-full flex-col border-t-2 border-gray-300 bg-ring pl-20 font-sans text-sm text-secondary-foreground">
+        <div className="mx-auto flex h-full w-[103.5%] flex-col border-t-2 border-gray-300 bg-ring pl-20 font-sans text-sm text-secondary-foreground">
           <header className="mb-4 flex items-center justify-between">
             {/* Filters */}
             <div className="flex items-center space-x-4">

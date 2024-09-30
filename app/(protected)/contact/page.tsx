@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import Arrow from '@/public/arrow-right-solid 2.svg';
 import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
 import Icon2 from '@/public/cards/arrow-right-solid 1.svg';
+import Link from 'next/link';
 
 // Sample data
 const contacts = [
@@ -262,9 +263,15 @@ const ContactTable = () => {
     >
      <header className="mb-4 flex items-center justify-between">
       <h1 className="text-2xl font-semibold">Contact Us</h1>
-      <Button variant="default" className="flex items-center space-x-2">
-       <Icon className="h-5 w-5" /> {/* Adjust size as needed */}
-       <span>Waitlist</span>
+      <Button variant="default" className="flex items-center space-x-2" asChild>
+       <Link href="/waitlist">
+        {' '}
+        {/* Link added for navigation */}
+        <div className="flex items-center">
+         <Icon className="h-5 w-5" />
+         <span>Waitlist</span>
+        </div>
+       </Link>
       </Button>
      </header>
     </div>

@@ -12,8 +12,7 @@ import Step4 from './Steps/fourthstep';
 import Step5 from './Steps/fiftstep'; // Corrected the import name
 
 export default function ClinicSupportForm() {
- const { step, nextStep, prevStep, setSuccess } = useFormStore();
- const router = useRouter();
+ const { step} = useFormStore();
  const methods = useForm(); // Initializes react-hook-form
 
  // Render Navigation Buttons based on the step

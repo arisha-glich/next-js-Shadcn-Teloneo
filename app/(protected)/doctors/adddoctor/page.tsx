@@ -32,13 +32,19 @@ const DashboardPage: React.FC = () => {
         </span>
       </Link>
     </Button>
-       <Button variant="default" className="flex items-center space-x-2">
-        <Icon className="h-5 w-5" />
-        <span>Waitlist</span>
-       </Button>
+    <Button variant="default" className="flex items-center space-x-2" asChild>
+       <Link href="/waitlist">
+        {' '}
+        {/* Link added for navigation */}
+        <div className="flex items-center">
+         <Icon className="h-5 w-5" />
+         <span>Waitlist</span>
+        </div>
+       </Link>
+      </Button>
       </div>
      </header>
-     <div className="mx-auto ml-[5rem] flex h-[1040px] w-[calc(108%-120px)] flex-col border-t-2 border-gray-300 bg-ring pl-20 font-sans text-[12px] text-secondary-foreground">
+     <div className="mx-auto ml-[5rem] flex h-[1024px] w-[calc(95%)] flex-col border-t-2 border-gray-300 bg-ring pl-20 font-sans text-[12px] text-secondary-foreground">
       <ClinicSupportForm />
      </div>
     </div>

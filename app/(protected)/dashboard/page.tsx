@@ -17,6 +17,8 @@ import ClockIcon from '@/public/hours.svg';
 import FileReviewIcon from '@/public/page.svg';
 import ClinicSupportForm from './ClinicSupportForm';
 import Modal from '@/components/ui/modal';
+import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
+import Link from 'next/link';
 
 const DashboardPage: React.FC = () => {
  const router = useRouter();
@@ -37,7 +39,16 @@ const DashboardPage: React.FC = () => {
        <Button variant="default" onClick={handleButtonClick}>
         Main Dashboard
        </Button>
-       <Button variant="default">Waitlist</Button>
+       <Button variant="default" className="flex items-center space-x-2" asChild>
+       <Link href="/waitlist">
+        {' '}
+        {/* Link added for navigation */}
+        <div className="flex items-center">
+         <Icon className="h-5 w-5" />
+         <span>Waitlist</span>
+        </div>
+       </Link>
+      </Button>
        <Button variant="destructive">Video appointment in progress</Button>
       </div>
      </header>
