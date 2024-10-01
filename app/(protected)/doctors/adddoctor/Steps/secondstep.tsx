@@ -184,7 +184,7 @@ export default function Step2() {
         <Button
           type="button"
           onClick={prevStep}
-          className="bg-white text-primary hover:bg-gray-100"
+            className="bg-white text-primary hover:bg-gray-100"
         >
           Prev
         </Button>

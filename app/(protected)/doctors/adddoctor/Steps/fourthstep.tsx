@@ -124,12 +124,12 @@ export default function Step4() {
     <button
      type="button"
      onClick={prevStep}
-      className="bg-white text-primary hover:bg-gray-100"
+      className=" h-8 rounded-xl  w-[120px] text-[15px] text-primary hover:bg-gray-100"
     >
      Prev
     </button>
     <button
-       className="w-[231px] bg-primary text-white"
+       className="w-[231px]  rounded-3xl text-[15px] h-[45px] bg-primary text-white"
      type="button" // Change to 'button' if not submitting the form
      onClick={() => {
       nextStep(); // Proceed to next step

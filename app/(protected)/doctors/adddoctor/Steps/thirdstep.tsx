@@ -228,10 +228,10 @@ const Step3: React.FC = () => {
 
         {/* Navigation Buttons */}
         <div className="flex justify-between mt-4">
-          <Button type="button" onClick={prevStep} disabled={isLoading}>
-            Previous
+          <Button type="button" onClick={prevStep} disabled={isLoading}   className="bg-white text-primary hover:bg-gray-100">
+            Prev
           </Button>
-          <Button type="submit" disabled={isLoading}>
+          <Button type="submit" disabled={isLoading}  className="w-[231px] bg-primary text-white">
             Next
           </Button>
         </div>

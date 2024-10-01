@@ -32,7 +32,7 @@ const DashboardPage: React.FC = () => {
  return (
   <div className="flex min-h-screen">
    <div className="ml-4 w-[calc(100%-110px)] flex-grow p-8">
-    <div className="mx-auto flex w-[calc(100%-150px)] flex-col gap-4">
+    <div className="mx-auto ml-14 flex w-[calc(100%-20px)] flex-col gap-4">
      <header className="mb-4 flex items-center justify-between">
       <h1 className="text-2xl font-semibold">Welcome, ABC Clinic</h1>
       <div className="flex gap-2">

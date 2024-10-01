@@ -33,7 +33,7 @@ const DashboardPage: React.FC = () => {
  return (
   <>
    <div className="m-8 flex-grow">
-    <div className="mx-auto flex h-[full] w-[calc(100%-120px)] flex-col gap-4 pl-5">
+    <div className="ml-20 flex h-[full] w-[calc(100%-100px)] flex-col gap-4 pl-5">
      {/* Header Section */}
      <header className="mb-4 flex items-center justify-between">
       <h1 className="text-2xl font-semibold">Welcome, ABC Clinic</h1>
@@ -121,7 +121,7 @@ const DashboardPage: React.FC = () => {
    </div>
 
    {/* Upcoming Visits Table */}
-   <div className="mx-auto ml-20 mt-3 h-[full] w-[calc(100%)] rounded-md border-t-2 border-gray-500 bg-ring p-12">
+   <div className="mx-auto ml-20 mt-3 h-[full] w-[calc(100%-70px)] rounded-md border-t-2 border-gray-500 bg-ring p-12">
     {/* Dropdown + Search */}
     <div className="flex items-center justify-between">
      <div className="flex items-center gap-2">
