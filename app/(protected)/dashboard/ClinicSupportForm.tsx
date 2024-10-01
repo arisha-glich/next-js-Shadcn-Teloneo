@@ -200,7 +200,7 @@ export default function ClinicSupportForm({
         {/* Logo Preview Section */}
         <div className="mx-auto mt-3 flex h-[100px] w-[125px] items-center justify-center rounded-md border-0 border-dashed bg-ring p-5">
          {logoPreview ? (
-          <div className="relative h-15 w-15">
+          <div className="relative h-12 w-12">
            {' '}
            {/* Set dimensions for the Image container */}
            <Image
