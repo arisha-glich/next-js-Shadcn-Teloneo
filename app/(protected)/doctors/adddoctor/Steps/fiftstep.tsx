@@ -20,7 +20,6 @@ type BankInfoType = z.infer<typeof bankInfoSchema>;
 
 export default function Step5() {
  const [isLoading, setIsLoading] = useState<boolean>(false);
- const [ setIsSubmitted] = useState(false);
  const { saveData, formData, prevStep } = useFormStore();
  const router = useRouter(); // Use the router here
 
@@ -45,7 +44,6 @@ export default function Step5() {
   setTimeout(() => {
    console.log('Bank Info Submitted:', data);
    setIsLoading(false);
-   setIsSubmitted(true);
 
    // Redirect to success page
    router.push('/doctors/adddoctors/success');
