@@ -46,6 +46,13 @@ export default function Sidebar() {
     setActiveLink(null); // Remove active state from any link
     router.push('/notifications'); // Navigate to the notifications page
   };
+  const  gotoMyaccount = () => {
+    setNotificationActive(true); // Turn the notification icon green
+    setActiveLink(null); // Remove active state from any link
+    router.push('/My_Account'); // Navigate to the notifications page
+  };
+
+ 
 
   return (
     <div className="fixed left-0 top-0 flex h-screen w-[102px] flex-col justify-between border-r bg-white shadow-lg">
@@ -156,7 +163,8 @@ export default function Sidebar() {
         <BrainIcon
           width={40}
           height={40}
-          className="rounded-full hover:bg-gray-200 h-[50px] w-[50px]"
+          className="rounded-full hover:bg-gray-200 h-[50px] w-[50px] hover:bottom-3 hover:border-primary" onClick={gotoMyaccount}
+          
         />
       </div>
     </div>
