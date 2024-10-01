@@ -296,7 +296,7 @@ const columns: ColumnDef<(typeof initialPaymentData)[0]>[] = [
  },
  {
     header: 'Action',
-    cell: ({ row }) => {
+    cell: () => {
       return (
         <div className="flex items-center space-x-4 text-primary">
           {/* View Details Button */}

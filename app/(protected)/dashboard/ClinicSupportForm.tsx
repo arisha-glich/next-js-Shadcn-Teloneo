@@ -12,6 +12,7 @@ import {
  DialogTitle,
 } from '@/components/ui/dialog'; // Importing from shadcn/ui
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 // Define the types for the form state and actions
 interface FormState {
@@ -37,7 +38,6 @@ interface FormActions {
  setSuccess: (success: boolean) => void;
  setFormData: (data: Partial<FormData>) => void;
 }
-
 
 // Zustand store to manage form state
 const useFormStore = create<FormState & FormActions>(set => ({
@@ -110,18 +110,18 @@ export default function ClinicSupportForm({
  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const file = e.target.files?.[0]; // Get the selected file
   if (file) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setLogoPreview(reader.result as string); // Set the preview to the file URL
-    };
-    reader.readAsDataURL(file); // Read the file as a data URL
-    setFormData({ clinicLogo: file.name }); // Update form data with the file name (or relevant data)
+   const reader = new FileReader();
+   reader.onloadend = () => {
+    setLogoPreview(reader.result as string); // Set the preview to the file URL
+   };
+   reader.readAsDataURL(file); // Read the file as a data URL
+   setFormData({ clinicLogo: file.name }); // Update form data with the file name (or relevant data)
   }
-};
+ };
 
  return (
   <Dialog open onOpenChange={closeModal}>
-   <DialogContent className="max-w-[606px] p-3 h-[550px]">
+   <DialogContent className="h-[550px] max-w-[606px] p-3">
     <DialogHeader>
      <DialogTitle className="text-center text-xl font-semibold">
       Are you ready to provide support?
@@ -180,30 +180,43 @@ export default function ClinicSupportForm({
      <div className="space-y-4">
       {step === 1 && (
        <div>
-       <div className="relative h-[45px] w-[546px]"> {/* Fixed width here */}
+        <div className="relative h-[45px] w-[546px]">
+         {' '}
+         {/* Fixed width here */}
          <Input
-           type="file"
-           required
-           placeholder="Attach CNIC Logo"
-           name="clinicLogo"
-           onChange={handleFileChange} // Update to use handleFileChange for file input
-           className="h-[45px] w-full rounded-[7px] border-0 bg-ring pr-10 text-black placeholder:text-[12px]"
+          type="file"
+          required
+          placeholder="Attach CNIC Logo"
+          name="clinicLogo"
+          onChange={handleFileChange} // Update to use handleFileChange for file input
+          className="h-[45px] w-full rounded-[7px] border-0 bg-ring pr-10 text-black placeholder:text-[12px]"
          />
          <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-           <PaperclipIcon className="text-gray-500" /> {/* Added color for visibility */}
+          <PaperclipIcon className="text-gray-500" />{' '}
+          {/* Added color for visibility */}
          </div>
-       </div>
-     
-       {/* Logo Preview Section */}
-       <div className="mx-auto mt-3 flex h-[100px] w-[125px] items-center justify-center rounded-md border-0 border-dashed bg-ring p-5">
+        </div>
+
+        {/* Logo Preview Section */}
+        <div className="mx-auto mt-3 flex h-[100px] w-[125px] items-center justify-center rounded-md border-0 border-dashed bg-ring p-5">
          {logoPreview ? (
-           <img src={logoPreview} alt="Logo Preview" className="h-full w-full object-contain" />
+          <div className="relative h-15 w-15">
+           {' '}
+           {/* Set dimensions for the Image container */}
+           <Image
+            src={logoPreview}
+            alt="Logo Preview"
+            layout="fill" // Use layout="fill" to fill the container
+            objectFit="contain" // Use objectFit to maintain aspect ratio
+            className="rounded-md" // Optional: Add any other styles you need
+           />
+          </div>
          ) : (
-           <span className="text-[12px] italic text-gray-500">Logo preview</span>
+          <span className="text-[12px] italic text-gray-500">Logo preview</span>
          )}
-       </div>
-     
-       <Input
+        </div>
+
+        <Input
          type="text"
          required
          placeholder="Clinic name"
@@ -211,9 +224,8 @@ export default function ClinicSupportForm({
          value={formData.clinicName || ''}
          onChange={handleInputChange}
          className="mt-4 h-[45px] w-full rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
-       />
-     </div>
-     
+        />
+       </div>
       )}
       {step === 2 && (
        <div>

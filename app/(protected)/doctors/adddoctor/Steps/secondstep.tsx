@@ -1,8 +1,7 @@
 'use client'; // Ensure this component behaves as a client component
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { z } from 'zod';
 import {
-  Form,
   FormControl,
   FormField,
   FormItem,
@@ -26,10 +25,6 @@ const step2Schema = z.object({
 // Infer the form data type from the schema
 type Step2FormType = z.infer<typeof step2Schema>;
 
-interface Step2Props {
-  onNext: (data: Step2FormType) => void;
-  onPrev: () => void;
-}
 
 export default function Step2() {
   const { saveData, nextStep, prevStep } = useFormStore(); // Get methods from Zustand store

@@ -30,7 +30,7 @@ type Step1FormType = z.infer<typeof step1Schema>;
 export default function Step1() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
-  const { toastError, toastSuccess } = useToast();
+  const {  toastSuccess } = useToast();
   const { saveData, nextStep } = useFormStore(); // Get methods from Zustand store
 
   const form = useForm<Step1FormType>({

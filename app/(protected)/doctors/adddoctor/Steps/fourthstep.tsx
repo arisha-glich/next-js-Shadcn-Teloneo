@@ -27,7 +27,7 @@ export default function Step4() {
  ) => (
   <FormField
    name={name}
-   render={({ field }) => (
+   render={() => (
     <FormItem>
      <FormLabel className="text-black">{placeholder}</FormLabel>
      <FormControl className="p-3">
@@ -88,7 +88,7 @@ export default function Step4() {
    </div>
    <FormField
     name="currentlyWorking"
-    render={({ field }) => (
+    render={() => (
      <FormItem>
       <div className="flex items-center space-x-2">
        <Controller

@@ -1,6 +1,5 @@
 import Sidebar from '@/components/Reusables/SideBar';
 import { Button } from '@/components/ui/button';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { ChevronRight } from 'lucide-react';
 import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
 import Link from 'next/link';

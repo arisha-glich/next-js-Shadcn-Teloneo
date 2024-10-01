@@ -8,8 +8,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Avataricon from '@/public/patient/60111 [Converted]-01 2.svg';
 import Image from 'next/image';
 import ConsultationSettings from './representative';
-import ScheduleInterface from './availability';
-import AppointmentCalendar from './availability';
 import App from './ReviewRow';
 
 export default function ClinicProfileSettings() {

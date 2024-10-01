@@ -47,7 +47,7 @@ export default function PaymentForm() {
  });
 
  // Handle form submission
- const handleSubmit = (data: formType) => {
+ const handleSubmit = () => {
   setIsLoading(true);
   // Simulating an API call
   setTimeout(() => {
