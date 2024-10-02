@@ -24,7 +24,6 @@ import {
 import Dollarsign from '@/public/payments/dollar.svg';
 import Ticksign from '@/public/payments/tick.svg';
 
-
 // Define validation schema
 const paymentSchema = z.object({
  meetingDuration: z.string().nonempty('Meeting Duration is required'),
@@ -47,7 +46,7 @@ export default function PaymentForm() {
  });
 
  // Handle form submission
- const handleSubmit = (data: formType) => {
+ const handleSubmit = () => {
   setIsLoading(true);
   // Simulating an API call
   setTimeout(() => {
@@ -82,7 +81,7 @@ export default function PaymentForm() {
      </div>
      <div className="flex items-center justify-between text-xl">
       <p>Admin Fee</p>
-      <p className="font-bold text-acc">+ $20</p>
+      <p className="text-acc font-bold">+ $20</p>
      </div>
      <div className="flex items-center justify-between text-xl">
       <p>Doctor Fee</p>
@@ -171,12 +170,12 @@ export default function PaymentForm() {
      />
 
      {/* Buttons */}
-     <div className="p-10 flex w-[546px] space-x-4">
+     <div className="flex w-[546px] space-x-4 p-10">
       <Button
        type="button"
        variant="outline"
        onClick={() => router.push('/')}
-       className="w-[300px] bg-none border-none"
+       className="w-[300px] border-none bg-none"
        disabled={isLoading}
       >
        Cancel
@@ -221,7 +220,7 @@ export default function PaymentForm() {
 
    {/* Second Modal: Payment Successful */}
    <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
-    <DialogContent className='h-[476px] w-[371px]'>
+    <DialogContent className="h-[476px] w-[371px]">
      <DialogHeader className="flex items-center justify-center">
       <Ticksign className="mr-2" /> {/* Add margin to space from title */}
       <DialogTitle className="text-center">Payment Successful</DialogTitle>
