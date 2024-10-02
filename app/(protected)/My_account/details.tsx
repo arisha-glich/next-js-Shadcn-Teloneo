@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Avataricon from '@/public/patient/60111 [Converted]-01 2.svg';
-import Image from 'next/image';
 import ConsultationSettings from './representative';
 import App from './ReviewRow';
 
@@ -64,18 +63,18 @@ export default function ClinicProfileSettings() {
       </TabsList>
 
       {/* Tabs Content */}
-      <Card className="h-auto w-[100%] bg-gray-100">
+      <Card className="h-[100%] w-[100%] bg-gray-100">
        <CardContent className="space-y-6">
         <TabsContent value="clinicProfileSettings" className="space-y-6">
          {/* Clinic Profile Settings Content */}
          <div className="flex items-center space-x-6">
           <Avatar className="h-28 w-28 rounded-md bg-gray-300">
-           <Image src={Avataricon} alt="Clinic Logo" />
+           <Avataricon />
           </Avatar>
           <div>
            <h2 className="text-lg font-semibold">ABC Therapy Clinic</h2>
            <p className="text-sm text-gray-500">Therapy clinic</p>
-           <Button variant="link" className="text-sm text-orange-500">
+           <Button variant="link" className="text-sm text-accent-foreground">
             Change logo
            </Button>
           </div>
@@ -120,12 +119,12 @@ export default function ClinicProfileSettings() {
          {/* Clinic Profile Settings Content */}
          <div className="flex items-center space-x-6">
           <Avatar className="h-28 w-28 rounded-md bg-gray-300">
-           <Image src={Avataricon} alt="Clinic Logo" />
+           <Avataricon />
           </Avatar>
           <div>
            <h2 className="text-xl font-semibold">ABC Therapy Clinic</h2>
            <p className="text-sm text-gray-500">Therapy clinic</p>
-           <Button variant="link" className="text-sm text-orange-500">
+           <Button variant="link" className="text-sm text-accent-foreground">
             Change logo
            </Button>
           </div>
@@ -163,7 +162,7 @@ export default function ClinicProfileSettings() {
           <Button variant="ghost" className="text-red-500">
            Cancel
           </Button>
-          <Button className="bg-green-500 px-6 text-white">Update</Button>
+          <Button className="bg-primary px-6 text-white">Update</Button>
          </div>
         </TabsContent>
 
@@ -171,12 +170,12 @@ export default function ClinicProfileSettings() {
         <TabsContent value="serviceType" className="space-y-6">
          <div className="flex items-center space-x-6">
           <Avatar className="h-28 w-28 rounded-md bg-gray-300">
-           <Image src={Avataricon} alt="Clinic Logo" />
+           <Avataricon />
           </Avatar>
           <div>
            <h2 className="text-xl font-semibold">ABC Therapy Clinic</h2>
            <p className="text-sm text-gray-500">Therapy clinic</p>
-           <Button variant="link" className="text-sm text-orange-500">
+           <Button variant="link" className="text-sm text-accent-foreground">
             Change logo
            </Button>
           </div>
@@ -225,12 +224,12 @@ export default function ClinicProfileSettings() {
         <TabsContent value="uploads" className="space-y-6">
          <div className="flex items-center space-x-6">
           <Avatar className="h-28 w-28 rounded-md bg-gray-300">
-           <Image src={Avataricon} alt="Clinic Logo" />
+           <Avataricon />
           </Avatar>
           <div>
            <h2 className="text-lg font-semibold">ABC Therapy Clinic</h2>
            <p className="text-sm text-gray-500">Therapy clinic</p>
-           <Button variant="link" className="text-sm text-orange-500">
+           <Button variant="link" className="text-sm text-accent-foreground">
             Change logo
            </Button>
           </div>
@@ -244,7 +243,7 @@ export default function ClinicProfileSettings() {
             placeholder="Attach clinic license/legal documents"
             className="w-full border-none p-0 text-[13px] text-gray-900 shadow-none focus:ring-0"
            />
-           <Button variant="ghost" className="p-2 text-orange-500">
+           <Button variant="ghost" className="p-2 text-accent-foreground">
             <svg
              xmlns="http://www.w3.org/2000/svg"
              className="h-5 w-5"

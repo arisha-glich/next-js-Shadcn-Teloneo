@@ -42,7 +42,7 @@ export default function ConsultationSettings() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 rounded-lg">
+    <div className="max-w-[546px] mx-auto p-6 rounded-lg">
       <h2 className="text-2xl font-bold mb-6 text-gray-700">Our service is available for...</h2>
 
       {/* Video Consultation */}
@@ -52,7 +52,7 @@ export default function ConsultationSettings() {
           type="checkbox"
           checked={services.videoConsultation.selected}
           onChange={() => handleCheckboxChange('videoConsultation')}
-          className="h-6 w-6 text-orange-500 rounded focus:ring-0 border-gray-300"
+          className="h-6 w-6 text-orange-500  rounded focus:ring-0 bg-white border-gray-300"
         />
       </div>
 

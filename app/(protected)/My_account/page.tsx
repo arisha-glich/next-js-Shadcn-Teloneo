@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-
 import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
 import Link from 'next/link';
 import MyaccountDetails from './details';

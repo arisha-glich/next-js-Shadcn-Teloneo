@@ -47,7 +47,7 @@ export default function PaymentForm() {
  });
 
  // Handle form submission
- const handleSubmit = () => {
+ const handleSubmit = (data: formType) => {
   setIsLoading(true);
   // Simulating an API call
   setTimeout(() => {
@@ -82,7 +82,7 @@ export default function PaymentForm() {
      </div>
      <div className="flex items-center justify-between text-xl">
       <p>Admin Fee</p>
-      <p className="font-bold text-accent-foreground">+ $20</p>
+      <p className="font-bold text-acc">+ $20</p>
      </div>
      <div className="flex items-center justify-between text-xl">
       <p>Doctor Fee</p>
@@ -171,12 +171,12 @@ export default function PaymentForm() {
      />
 
      {/* Buttons */}
-     <div className="mt-6 flex w-[546px] space-x-4">
+     <div className="p-10 flex w-[546px] space-x-4">
       <Button
        type="button"
        variant="outline"
        onClick={() => router.push('/')}
-       className="w-full"
+       className="w-[300px] bg-none border-none"
        disabled={isLoading}
       >
        Cancel

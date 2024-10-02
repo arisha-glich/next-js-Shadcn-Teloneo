@@ -257,12 +257,12 @@ const ContactTable = () => {
 
  return (
   <div className="flex">
-   <div className="flex-grow p-12 pr-10">
+   <div className="flex-grow  pr-10">
     <div
      className="mx-auto flex h-[100] flex-col gap-4 pl-5 w-[calc(100%-120px)]"
     >
-     <header className="mb-4 flex items-center justify-between">
-      <h1 className="text-2xl font-semibold">Contact Us</h1>
+     <header className="mb-6 mt-2\ ml-20 flex items-center justify-between">
+      <h1 className="text-2xl mt-2 font-semibold ">Contact Us</h1>
       <Button variant="default" className="flex items-center space-x-2" asChild>
        <Link href="/waitlist">
         {' '}
@@ -276,7 +276,7 @@ const ContactTable = () => {
      </header>
     </div>
     <div
-     className="mx-auto ml-10 flex  flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground w-[calc(100%)] h-[calc(100%)]"
+     className="mx-auto ml-20 flex  flex-col gap-4 border-t-2 border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground w-[calc(98%)] h-[calc(100%)]"
   
     >
      <div className="overflow-x-hidden">

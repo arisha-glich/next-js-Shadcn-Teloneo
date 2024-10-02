@@ -1,8 +1,8 @@
 'use client';
 import { useState, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider } from '@/components/theme-provider';
 import AuthProvider, { type IAuthContext } from './auth-provider';
+import { Suspense } from 'react';
 const Provider = ({
  children,
  session,
@@ -13,11 +13,11 @@ const Provider = ({
  const [queryClient] = useState(() => new QueryClient());
 
  return (
- 
+  <Suspense>
    <QueryClientProvider client={queryClient}>
     <AuthProvider session={session}>{children}</AuthProvider>
    </QueryClientProvider>
- // </ThemeProvider>
+  </Suspense>
  );
 };
 
