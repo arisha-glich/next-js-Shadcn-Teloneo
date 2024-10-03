@@ -16,7 +16,7 @@ import useToast from '@/hooks/use-toast';
 import { addPatientAction } from './patient';
 import { useRouter } from 'next/navigation';
 
-// Schema for form validation
+
 const addPatientSchema = z.object({
   firstName: z.string().nonempty('First Name is required'),
   lastName: z.string().nonempty('Last Name is required'),
