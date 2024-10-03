@@ -7,7 +7,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import useFormStore from '@/stores/useFormStore';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+
 
 // Define validation schema
 const bankInfoSchema = z.object({
