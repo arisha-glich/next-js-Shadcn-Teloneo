@@ -13,8 +13,8 @@ export default function ClinicProfileSettings() {
  return (
   <div className="flex h-screen overflow-hidden bg-white">
    {/* Main Content */}
-   <div className="ml-5 h-[100%] w-[calc(101%)] flex-grow overflow-hidden">
-    <div className="container ml-5 flex h-[100%] w-[calc(101%)] flex-col">
+   <div className="ml-5 h-[100%] w-[calc(103%)] flex-grow overflow-hidden">
+    <div className="container ml-4 flex h-[100%] w-[calc(101%)] flex-col">
      {/* Tabs */}
      <Tabs defaultValue="clinicProfileSettings" className="space-y-4">
       <TabsList className="grid grid-cols-8 bg-transparent p-0">
@@ -63,7 +63,7 @@ export default function ClinicProfileSettings() {
       </TabsList>
 
       {/* Tabs Content */}
-      <Card className="h-[100%] w-[100%] bg-gray-100">
+      <Card className="h-[100%] w-[103%] bg-gray-100">
        <CardContent className="space-y-6">
         <TabsContent value="clinicProfileSettings" className="space-y-6">
          {/* Clinic Profile Settings Content */}

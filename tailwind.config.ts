@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss"
-import {fontFamily} from "tailwindcss/defaultTheme"
+import { fontFamily } from "tailwindcss/defaultTheme"
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -7,14 +8,18 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        sm: "375px ",  // Small devices
+        md: "768px",  // Medium devices (tablets)
+        lg: "1024px", // Large devices (desktops)
+        xl: "1280px", // Extra large devices
+        "2xl": "1400px", // Custom larger screen
       },
     },
     extend: {
@@ -72,9 +77,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      fontFamily:{
-        barlow:["var(--font-barlow)",...fontFamily.sans]
-      }
+      fontFamily: {
+        barlow: ["var(--font-barlow)", ...fontFamily.sans],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

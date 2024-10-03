@@ -34,7 +34,7 @@ const InputField: React.FC<InputFieldProps> = ({
       {label && (
         <label
           htmlFor={name}
-          className="block font-open-sans text-sm font-normal leading-4 text-left"
+          className="block font-open-sans text-sm font-normal leading-4 text-left sm:w-[40px] m:w-[30px]"
           style={{
             width: '67px',
             height: '16px',

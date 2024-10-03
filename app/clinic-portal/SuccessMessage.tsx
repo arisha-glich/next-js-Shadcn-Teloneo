@@ -13,7 +13,8 @@ const SuccessMessage: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto my-32 flex h-[530px] w-[656px] flex-col items-center justify-center rounded-lg bg-white shadow-lg">
+    <div className="mx-auto my-32 flex flex-col items-center justify-center rounded-lg bg-white shadow-lg 
+                    sm:w-[313px] sm:h-[639px] md:w-[450px] md:h-[580px] lg:w-[656px] lg:h-[530px]">
       {/* Green Checkmark Circle */}
       <div className="w-45 mb-8 flex h-32 items-center justify-center rounded-full bg-background">
         <SvgLogo />

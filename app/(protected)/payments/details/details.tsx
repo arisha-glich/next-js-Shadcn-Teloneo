@@ -51,11 +51,9 @@ export default function PaymentForm() {
   // Simulating an API call
   setTimeout(() => {
    setIsLoading(false);
-   setShowFirstModal(true); // Show payment confirmation modal
+   setShowFirstModal(true);
   }, 1000);
  };
-
- // Function to handle confirming the payment
  const confirmPayment = () => {
   setShowFirstModal(false); // Close the first modal
   setShowSuccessModal(true); // Show success modal

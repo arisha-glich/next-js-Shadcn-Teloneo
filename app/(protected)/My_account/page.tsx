@@ -9,7 +9,7 @@ import MyaccountDetails from './details';
 const DashboardPage: React.FC = () => {
  return (
   <div className="flex-grow">
-   <div className="mx-auto ml-3.5 mt-3 flex h-[calc(100%-112px)] w-full flex-col">
+   <div className="mx-auto ml-3.5 mt-3 flex h-[calc(100%)] w-full flex-col">
     {/* Header Section */}
     <header className="mb-6 flex w-full items-center justify-between">
      <h1 className="pl-24 text-2xl font-semibold">My Account</h1>
@@ -41,7 +41,7 @@ const DashboardPage: React.FC = () => {
       </Button>
      </div>
     </header>
-    <div className="   flex h-full w-[100%] flex-col bg-white  font-sans text-sm text-secondary-foreground">
+    <div className="   flex h-full w-[102%] flex-col bg-white  font-sans text-sm text-secondary-foreground">
      <MyaccountDetails />
     </div>
    </div>
