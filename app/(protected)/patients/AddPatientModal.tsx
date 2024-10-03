@@ -77,7 +77,7 @@ export default function AddPatientForm() {
                       {...field}
                       placeholder="First Name"
                       disabled={isLoading}
-                      className="w-full border border-gray-300 p-3 rounded-md"
+                      className="w-full border  text-gray-400 border-gray-300 p-3 rounded-md"
                     />
                   </FormControl>
                   <FormMessage />
@@ -96,7 +96,7 @@ export default function AddPatientForm() {
                       {...field}
                       placeholder="Last Name"
                       disabled={isLoading}
-                      className="w-full border border-gray-300 p-3 rounded-md"
+                      className="w-full border  text-gray-400 border-gray-300 p-3 rounded-md"
                     />
                   </FormControl>
                   <FormMessage />
@@ -116,7 +116,7 @@ export default function AddPatientForm() {
                       type="email"
                       placeholder="m@example.com"
                       disabled={isLoading}
-                      className="w-full border border-gray-300 p-3 rounded-md"
+                      className="w-full border  text-gray-400 border-gray-300 p-3 rounded-md"
                     />
                   </FormControl>
                   <FormMessage />
@@ -135,7 +135,7 @@ export default function AddPatientForm() {
                       {...field}
                       placeholder="Street Address"
                       disabled={isLoading}
-                      className="w-full border border-gray-300 p-3 rounded-md"
+                      className="w-full border  text-gray-400 border-gray-300 p-3 rounded-md"
                     />
                   </FormControl>
                   <FormMessage />
@@ -146,7 +146,7 @@ export default function AddPatientForm() {
             {/* Submit Button */}
             <div className="flex space-x-4 mt-6">
               <Button
-                className="bg-gray-300 text-gray-700 w-full p-3 rounded-md"
+                className="bg-white text-gray-700 w-full p-3 rounded-full"
                 type="button"
                 disabled={isLoading}
                 onClick={() => router.push('/')} // Cancel action
@@ -155,7 +155,7 @@ export default function AddPatientForm() {
               </Button>
 
               <Button
-                className="bg-green-500 text-white w-full p-3 rounded-md"
+                className="bg-primary text-white w-full p-3 rounded-full"
                 type="submit"
                 loading={isLoading}
               >
