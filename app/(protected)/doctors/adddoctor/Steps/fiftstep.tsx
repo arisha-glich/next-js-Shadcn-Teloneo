@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input';
 import useFormStore from '@/stores/useFormStore';
 import { useRouter } from 'next/navigation';
 
-
 // Define validation schema
 const bankInfoSchema = z.object({
  selectedBank: z.string().nonempty('Bank selection is required'),
@@ -47,7 +46,7 @@ export default function Step5() {
    setIsLoading(false);
 
    // Redirect to success page
-   router.push('/doctors/adddoctors/success');
+   router.push('/doctors/adddoctor/success');
   }, 1000);
  };
 
@@ -130,7 +129,7 @@ export default function Step5() {
       <button
        type="button"
        onClick={prevStep}
-       className="bg-white text-primary hover:bg-gray-100"
+       className="h-8 w-[120px] rounded-xl text-[15px] text-primary hover:bg-gray-100"
       >
        Prev
       </button>
@@ -139,7 +138,7 @@ export default function Step5() {
       <button
        type="submit"
        disabled={isLoading}
-       className="w-[231px] bg-primary text-white"
+       className="h-[45px] w-[231px] rounded-3xl bg-primary text-[15px] text-white"
       >
        {isLoading ? 'Submitting...' : 'Submit'}
       </button>
