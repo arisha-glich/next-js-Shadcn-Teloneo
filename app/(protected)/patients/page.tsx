@@ -18,7 +18,6 @@ import {
  Dialog,
  DialogContent,
  DialogHeader,
- DialogTitle,
 } from '@/components/ui/dialog'; // Import Dialog components
 
 const DashboardPage: React.FC = () => {
@@ -29,10 +28,6 @@ const DashboardPage: React.FC = () => {
   setIsDialogOpen(true);
  };
 
- // Function to close the dialog
- const closeDialog = () => {
-  setIsDialogOpen(false);
- };
 
  return (
   <div className="m-8 flex-grow">
