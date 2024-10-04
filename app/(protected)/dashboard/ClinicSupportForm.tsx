@@ -170,7 +170,7 @@ export default function ClinicSupportForm({
            s
           )}
          </div>
-         <p className="mt-2 text-xs text-gray-700">
+         <p className="mt-2 text-[12px] text-black">
           {['Clinic ID', 'Representative', 'Service type', 'Uploads'][s - 1]}
          </p>
         </div>
