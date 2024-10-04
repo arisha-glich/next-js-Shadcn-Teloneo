@@ -99,7 +99,7 @@ export default function Sidebar() {
     </div>
 
     <div className="flex-1 flex flex-col justify-between shadow-lg">
-     <nav className="flex flex-col items-center space-y-6">
+     <nav className="flex flex-col items-center space-y-1">
       <Link
        href="/"
        className={`group flex w-[83px] flex-col items-center rounded-md hover:bg-gray-200 ${

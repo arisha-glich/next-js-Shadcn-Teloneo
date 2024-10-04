@@ -168,8 +168,8 @@ const DashboardPage: React.FC = () => {
 
     {/* Shadcn Table Component */}
     <Table className="border-collapse border-0">
-     <TableHeader className="border-collapse border-0 border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground">
-      <TableRow className="border-0">
+     <TableHeader className="border-collapse border-0 font-bold border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground">
+      <TableRow className="border-collapse border-0 font-bold border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground">
        <TableHead className="border-0">Type</TableHead>
        <TableHead className="border-0">Scheduled</TableHead>
        <TableHead className="border-0">Guardian</TableHead>
