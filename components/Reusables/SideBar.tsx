@@ -90,7 +90,7 @@ export default function Sidebar() {
 
    {/* Sidebar */}
    <div
-    className={`fixed left-0 top-0 flex h-screen w-[102px] flex-col justify-between border-r bg-white shadow-lg transition-transform duration-300 ease-in-out ${
+    className={`fixed left-0 top-0 flex  w-[102px] h-[100%] flex-col justify-between  bg-white shadow-lg transition-transform duration-300 ease-in-out ${
      isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
     } md:translate-x-0`}
    >
@@ -98,7 +98,7 @@ export default function Sidebar() {
      <SvgPath width={60} height={40} />
     </div>
 
-    <div className="flex-1 flex flex-col justify-between">
+    <div className="flex-1 flex flex-col justify-between shadow-lg">
      <nav className="flex flex-col items-center space-y-6">
       <Link
        href="/"

@@ -28,6 +28,9 @@ import ActionMenuIcon from '@/public/video.svg'; // Replace with actual SVG path
 import Cardone from '@/public/cards/1.svg';
 import Cardtwo from '@/public/cards/2.svg';
 import Cardthree from '@/public/cards/3.svg';
+import Icon from '@/public/cards/clipboard-list-check-solid 1.svg';
+import Icon2 from '@/public/waitlist/video-icon.svg';
+import Link from 'next/link';
 
 const DashboardPage: React.FC = () => {
  return (
@@ -38,19 +41,45 @@ const DashboardPage: React.FC = () => {
      <header className="mb-4 flex items-center justify-between">
       <h1 className="text-2xl font-semibold">Welcome, ABC Clinic</h1>
       <div className="flex gap-2">
-       <Button variant="default">Waitlist</Button>
-       <Button variant="destructive">Video appointment in progress</Button>
+      <Button
+        variant="default"
+        className="flex items-center space-x-2"
+        asChild
+       >
+        <Link href="/waitlist">
+         {' '}
+         {/* Link added for navigation */}
+         <div className="flex items-center">
+          <Icon className="h-5 w-5" />
+          <span>Waitlist</span>
+         </div>
+        </Link>
+       </Button>
+       <Button
+        variant="destructive"
+        className="flex items-center "
+        asChild
+       >
+        <Link href="/">
+         {' '}
+         {/* Link added for navigation */}
+         <div className="flex items-center justify-center p-1">
+          <Icon2 className="h-5 w-7" />
+          <span>Video appointment in progress</span>
+         </div>
+        </Link>
+       </Button>
       </div>
      </header>
 
      {/* Statistic Cards */}
      <div className="grid grid-cols-4 gap-4">
-      <Card className="h-[80px] w-[257px] border p-2">
+     <Card className="h-[80px] w-[257px] border p-2">
        <CardContent className="flex items-center gap-2">
         <AppointmentsIcon className="h-6 w-6" />
-        <div className="flex h-[43px] w-[80px] flex-col justify-center">
-         <CardTitle className="p-3 text-[18px] font-bold">1,823</CardTitle>
-         <CardDescription className="text-[10px]">Appointments</CardDescription>
+        <div className="flex h-[43px] w-[80px] mt-3 flex-col justify-center">
+         <CardTitle className=" text-[18px] font-bold">1,823</CardTitle>
+         <CardDescription className="text-[10px]  text-secondary-foreground">Appointments</CardDescription>
          <AppointmentsIcon className="h-6 w-6" />
         </div>
         <Cardone className="h-17 w-15 m-2" />
@@ -60,9 +89,9 @@ const DashboardPage: React.FC = () => {
       <Card className="h-[80px] w-[257px] border p-2">
        <CardContent className="flex items-center justify-between gap-2">
         <UpcomingIcon className="h-6 w-6" />
-        <div className="flex h-[43px] w-[80px] flex-col justify-center">
-         <CardTitle className="p-2 text-[18px] font-bold">1,823</CardTitle>
-         <CardDescription className="text-[10px]">Upcoming</CardDescription>
+        <div className="flex h-[43px] w-[80px] mt-3 flex-col justify-center">
+         <CardTitle className=" text-[18px] font-bold">1,823</CardTitle>
+         <CardDescription className="text-[10px]  text-secondary-foreground">Upcoming</CardDescription>
         </div>
         <Cardtwo className="h-17 w-15 m-2" />
        </CardContent>
@@ -71,9 +100,9 @@ const DashboardPage: React.FC = () => {
       <Card className="h-[80px] w-[257px] border p-2">
        <CardContent className="flex items-center gap-2">
         <TotalActiveIcon className="h-6 w-6" />
-        <div className="flex h-[43px] w-[80px] flex-col justify-center">
-         <CardTitle className="p-3 text-[18px] font-bold">1,823</CardTitle>
-         <CardDescription className="text-[10px]">Total Active</CardDescription>
+        <div className="flex h-[43px] w-[80px] mt-3 flex-col justify-center">
+         <CardTitle className=" text-[18px] font-bold">1,823</CardTitle>
+         <CardDescription className="text-[10px]  text-secondary-foreground">Total Active</CardDescription>
         </div>
         <Cardthree className="h-17 w-15 m-2" />
        </CardContent>
@@ -82,9 +111,9 @@ const DashboardPage: React.FC = () => {
       <Card className="h-[80px] w-[257px] border p-2">
        <CardContent className="flex items-center gap-2">
         <TotalCompletedIcon className="h-6 w-7" />
-        <div className="flex h-[43px] w-[80px] flex-col justify-center">
-         <CardTitle className="p-3 text-[18px] font-bold">1,823</CardTitle>
-         <CardDescription className="text-[10px]">
+        <div className="flex h-[43px] w-[80px] mt-3 flex-col justify-center">
+         <CardTitle className=" text-[18px] font-bold">1,823</CardTitle>
+         <CardDescription className="text-[10px]  text-secondary-foreground">
           Completed
          </CardDescription>
         </div>

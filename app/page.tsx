@@ -5,7 +5,7 @@ import Footer from '@/components/Reusables/Footer';
 
 const RegisterPage: React.FC = () => {
  return (
-  <div className="flex min-h-screen flex-col">
+  <div className="flex h-[100%] flex-col">
    <Header />
    <div className="mt-[200px] flex flex-grow items-center justify-center">
     <Footer />
