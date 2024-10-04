@@ -35,10 +35,10 @@ import Link from 'next/link';
 const DashboardPage: React.FC = () => {
  return (
   <>
-   <div className="m-8 flex-grow">
-    <div className="ml-20 flex h-[full] w-[calc(100%-100px)] flex-col gap-4 pl-5">
+   <div className="m-2 flex-grow overflow-hidden">
+    <div className="ml-20 flex h-[100%] w-[calc(100%-100px)] flex-col gap-4 pl-5">
      {/* Header Section */}
-     <header className="mb-4 flex items-center justify-between">
+     <header className="flex items-center justify-between">
       <h1 className="text-2xl font-semibold">Welcome, ABC Clinic</h1>
       <div className="flex gap-2">
       <Button
@@ -73,7 +73,7 @@ const DashboardPage: React.FC = () => {
      </header>
 
      {/* Statistic Cards */}
-     <div className="grid grid-cols-4 gap-4">
+     <div className="grid grid-cols-4 gap-2">
      <Card className="h-[80px] w-[257px] border p-2">
        <CardContent className="flex items-center gap-2">
         <AppointmentsIcon className="h-6 w-6" />
@@ -123,7 +123,7 @@ const DashboardPage: React.FC = () => {
      </div>
 
      {/* Status Messages */}
-     <div className="mt-6 flex h-[80px] w-[calc(100%)] items-center gap-2 rounded-lg bg-destructive p-6">
+     <div className=" flex h-[80px] w-[calc(100%)] items-center  rounded-lg bg-destructive p-6">
       <Client className="w-12 text-primary" />
       <div>
        <p className="text-sm font-semibold">Your account has been approved!</p>
@@ -136,7 +136,7 @@ const DashboardPage: React.FC = () => {
       </Button>
      </div>
 
-     <div className="mt-4 flex h-[80px] w-[calc(100%)] items-center gap-2 rounded-lg bg-destructive p-6">
+     <div className=" flex h-[80px] w-[calc(100%)] items-center  rounded-lg bg-destructive p-6">
       <Clienttwo className="w-12 text-primary" />
       <div>
        <p className="text-sm font-semibold">Lorem ipsum dolor sit amet.</p>
@@ -150,7 +150,7 @@ const DashboardPage: React.FC = () => {
    </div>
 
    {/* Upcoming Visits Table */}
-   <div className="mx-auto ml-20 mt-3 h-[full] w-[calc(100%-70px)] rounded-md border-t-2 border-gray-500 bg-ring p-12">
+   <div className=" ml-20  h-[280px] w-[calc(100%-70px)] rounded-md border-t-2 border-gray-500 bg-ring p-4">
     {/* Dropdown + Search */}
     <div className="flex items-center justify-between">
      <div className="flex items-center gap-2">
@@ -167,7 +167,7 @@ const DashboardPage: React.FC = () => {
     </div>
 
     {/* Shadcn Table Component */}
-    <Table className="border-collapse border-0">
+    <Table className="border-collapse border-0 p-4">
      <TableHeader className="border-collapse border-0 font-bold border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground">
       <TableRow className="border-collapse border-0 font-bold border-gray-300 bg-ring pl-5 font-sans text-[12px] text-secondary-foreground">
        <TableHead className="border-0">Type</TableHead>
@@ -178,31 +178,31 @@ const DashboardPage: React.FC = () => {
       </TableRow>
      </TableHeader>
      <TableBody className="border-collapse border-0">
-      <TableRow className="border-0">
-       <TableCell className="flex items-center border-0">
+      <TableRow className="border-0 p-0 ">
+       <TableCell className="flex items-center border-0 -0">
         <VideoIcon width={50} height={50}></VideoIcon>
         <span>Video appointment</span>
        </TableCell>
-       <TableCell className="border-0">14/04/2023, 6:00 PM EST</TableCell>
-       <TableCell className="border-0">Olivia Green</TableCell>
-       <TableCell className="border-0">John Doe</TableCell>
-       <TableCell className="flex items-center border-0">
+       <TableCell className="border-0 p-0">14/04/2023, 6:00 PM EST</TableCell>
+       <TableCell className="border-0 p-0">Olivia Green</TableCell>
+       <TableCell className="border-0 p-0">John Doe</TableCell>
+       <TableCell className="flex items-center border-0 p-0">
         <ClockIcon width={30} height={30}></ClockIcon>
         <ActionMenuIcon width={50} height={50}></ActionMenuIcon>
        </TableCell>
       </TableRow>
 
-      <TableRow className="border-0">
-       <TableCell className="flex items-center border-0">
+      <TableRow className="border-0 mt-0">
+       <TableCell className="flex items-center border-0 ml-3 p-0 ">
         <VideoIcon width={50} height={50}></VideoIcon>
         <span>Video appointment</span>
        </TableCell>
-       <TableCell className="border-0">14/04/2023, 6:00 PM EST</TableCell>
-       <TableCell className="border-0">Olivia Green</TableCell>
-       <TableCell className="border-0">John Doe</TableCell>
-       <TableCell className="flex flex-col gap-1 border-0">
-        <div className="text-[12px] text-gray-400">Visit patient in</div>
-        <div className="text-[12px] font-bold text-accent-foreground">
+       <TableCell className="border-0 p-0">14/04/2023, 6:00 PM EST</TableCell>
+       <TableCell className="border- p-0">Olivia Green</TableCell>
+       <TableCell className="border-0 p-0">John Doe</TableCell>
+       <TableCell className="flex flex-col gap-1 border-0 p-0">
+        <div className="text-[12px] text-gray-400 p-0">Visit patient in</div>
+        <div className="text-[12px] font-bold text-accent-foreground p-0">
          00:34:29
         </div>
        </TableCell>
