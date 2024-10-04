@@ -15,7 +15,7 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
-        sm: "375px ",  // Small devices
+        sm: "375px",  // Small devices
         md: "768px",  // Medium devices (tablets)
         lg: "1024px", // Large devices (desktops)
         xl: "1280px", // Extra large devices
@@ -79,6 +79,10 @@ const config = {
       },
       fontFamily: {
         barlow: ["var(--font-barlow)", ...fontFamily.sans],
+      },
+      fontWeight: {
+        semibold: "700", // Set semibold to 700
+        normal: "400",    // Set normal to 400
       },
     },
   },
