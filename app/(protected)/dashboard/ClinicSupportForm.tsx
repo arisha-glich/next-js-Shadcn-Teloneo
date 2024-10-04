@@ -10,6 +10,7 @@ import {
  DialogContent,
  DialogHeader,
  DialogTitle,
+ DialogDescription,
 } from '@/components/ui/dialog'; // Importing from shadcn/ui
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -123,57 +124,58 @@ export default function ClinicSupportForm({
   <Dialog open onOpenChange={closeModal}>
    <DialogContent className="h-[550px] max-w-[606px] p-3">
     <DialogHeader>
-     <DialogTitle className="text-center text-xl font-semibold">
+     <DialogTitle className="p-3 text-center text-[26px] font-semibold">
       Are you ready to provide support?
      </DialogTitle>
+     <DialogDescription className="text-normal text-center text-[12px] text-secondary-foreground">
+      Join as a clinic who will lorem ipsum dolor sit amet consectetur.
+     </DialogDescription>
     </DialogHeader>
     <form
      onSubmit={handleSubmit}
-     className="t-[70px] flex h-[530px] w-[606x] flex-col gap-6 rounded-3xl p-3"
+     className="t-[65px] flex h-[530px] w-[606x] flex-col items-center gap-2 rounded-3xl p-3 text-[12px] text-accent-foreground"
     >
-     <p className="text-center text-gray-500">
-      Join as a clinic who will lorem ipsum dolor sit amet consectetur.
-     </p>
-
      {/* Stepper */}
-     <div className="relative mb-3 flex items-center justify-between">
-      <div className="absolute left-0 top-5 z-0 h-[2px] w-full bg-gray-300"></div>
-      {[1, 2, 3, 4].map(s => (
-       <div key={s} className="relative flex flex-col items-center">
-        <div
-         className={cn(
-          'relative z-10 flex h-10 w-10 items-center justify-center rounded-full',
-          s < step
-           ? 'bg-primary text-white'
-           : s === step
-             ? 'bg-accent-foreground text-white'
-             : 'border-2 border-gray-400 bg-white text-gray-400'
-         )}
-        >
-         {s < step ? (
-          <svg
-           xmlns="http://www.w3.org/2000/svg"
-           fill="none"
-           viewBox="0 0 24 24"
-           strokeWidth="1.5"
-           stroke="currentColor"
-           className="h-6 w-6"
-          >
-           <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4.5 12.75l6 6 9-13.5"
-           />
-          </svg>
-         ) : (
-          s
-         )}
+     <div className="relative mb-3 flex w-[417px] items-center justify-center">
+      <div className="absolute top-5 z-0 h-[2px] w-full bg-gray-300"></div>
+      <div className="flex w-full max-w-[417px] justify-between">
+       {[1, 2, 3, 4].map(s => (
+        <div key={s} className="relative flex flex-col items-center">
+         <div
+          className={cn(
+           'relative z-10 flex h-10 w-10 items-center justify-center rounded-full',
+           s < step
+            ? 'bg-primary text-white'
+            : s === step
+              ? 'bg-accent-foreground text-white'
+              : 'border-2 border-gray-400 bg-white text-gray-400'
+          )}
+         >
+          {s < step ? (
+           <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="h-6 w-6"
+           >
+            <path
+             strokeLinecap="round"
+             strokeLinejoin="round"
+             d="M4.5 12.75l6 6 9-13.5"
+            />
+           </svg>
+          ) : (
+           s
+          )}
+         </div>
+         <p className="mt-2 text-xs text-gray-700">
+          {['Clinic ID', 'Representative', 'Service type', 'Uploads'][s - 1]}
+         </p>
         </div>
-        <p className="mt-2 text-xs text-gray-700">
-         {['Clinic ID', 'Representative', 'Service type', 'Uploads'][s - 1]}
-        </p>
-       </div>
-      ))}
+       ))}
+      </div>
      </div>
 
      {/* Form Body */}
@@ -200,7 +202,7 @@ export default function ClinicSupportForm({
         {/* Logo Preview Section */}
         <div className="mx-auto mt-3 flex h-[100px] w-[125px] items-center justify-center rounded-md border-0 border-dashed bg-ring p-5">
          {logoPreview ? (
-          <div className="relative h-12 w-12">
+          <div className="h-12 w-12 relative">
            {' '}
            {/* Set dimensions for the Image container */}
            <Image
@@ -223,7 +225,7 @@ export default function ClinicSupportForm({
          name="clinicName"
          value={formData.clinicName || ''}
          onChange={handleInputChange}
-         className="mt-4 h-[45px] w-full rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
+         className="mt-4 h-[45px] w-[546px] rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
         />
        </div>
       )}
@@ -233,19 +235,19 @@ export default function ClinicSupportForm({
          type="text"
          required
          placeholder="Representative name"
-         className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
+         className="mb-4 h-[45px] w-[546px] rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
         />
         <Input
          type="email"
          required
          placeholder="Representative's official email address"
-         className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
+         className="mb-4 h-[45px] w-[546px] rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
         />
         <Input
          type="text"
          required
          placeholder="Clinic street address"
-         className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
+         className="mb-4 h-[45px] w-[546px] rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
         />
        </div>
       )}
@@ -258,7 +260,7 @@ export default function ClinicSupportForm({
          type="text"
          required
          placeholder="Select a category"
-         className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
+         className="mb-4 h-[45px] w-[546px] rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
         />
         <label className="mb-2 block text-sm font-medium text-gray-700">
          Sub Category
@@ -267,7 +269,7 @@ export default function ClinicSupportForm({
          type="text"
          required
          placeholder="Select a sub-category"
-         className="mb-4 h-[45px] w-full rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
+         className="mb-4 h-[45px] w-[546px] rounded-[7px] border-0 bg-ring text-gray-400 placeholder:text-[12px]"
         />
        </div>
       )}
@@ -326,16 +328,16 @@ export default function ClinicSupportForm({
      </div>
 
      {/* Navigation Buttons */}
-     <div className="mt-6 flex justify-center gap-4">
+     <div className="absolute top-[425px] mt-6 flex w-auto justify-center gap-4">
       <Button
        type="button"
        onClick={prevStep}
        disabled={step === 1}
-       className="h-[45px] flex-1 bg-white text-primary opacity-100 hover:bg-gray-100"
+       className="h-[45px] flex-1 bg-white px-[4rem] text-primary opacity-100 hover:bg-gray-100"
       >
        Prev
       </Button>
-      <Button type="submit" className="h-[45px] flex-1 bg-primary">
+      <Button type="submit" className="h-[45px] flex-1 bg-primary px-[4rem]">
        {step === 4 ? 'Submit' : 'Next'}
       </Button>
      </div>
