@@ -34,7 +34,7 @@ const InputField: React.FC<InputFieldProps> = ({
       {label && (
         <label
           htmlFor={name}
-          className="block font-open-sans text-sm font-normal leading-4 text-left sm:w-[40px] m:w-[30px]"
+          className="block  font-open-sans text-sm font-normal leading-4 text-left sm:w-[40px] m:w-[30px]"
           style={{
             width: '67px',
             height: '16px',
@@ -44,6 +44,7 @@ const InputField: React.FC<InputFieldProps> = ({
             opacity: 0, // Making the label hidden per your specifications
             fontSize: '12px',
             lineHeight: '16.34px',
+            background: 'Gray',
           }}
         >
           {label}
@@ -54,11 +55,11 @@ const InputField: React.FC<InputFieldProps> = ({
         type={type}
         {...register(name, { required })} // Register the input field
         placeholder={placeholder}
-        className={`w-full rounded-lg border px-4 py-2 text-[12px] text-secondary-foreground  transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary ${
+        className={`w-[546px] h-[45px] rounded-[7px]  border px-4 py-2 text-[12px] text-secondary-foreground bg-ring  transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary ${
           error ? 'border-red-500 focus:ring-red-500' : 'border-secondary'
         }`}
       />
-      {error && <p className="mt-1 text-sm text-red-600">{error.message}</p>}
+      {error && <p className="mt-0 mb-0 text-[10px] text-red-600">{error.message}</p>}
     </div>
   );
 };

@@ -46,17 +46,17 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4 py-8 sm:px-6 md:px-8">
-      <div className="w-full max-w-[545px] p-6 bg-background rounded-xl shadow-md md:max-w-[545] sm:max-w-[345]">
-        <h1 className="text-center text-[24px] font-semibold font-open-sans md:text-[22px] sm:text-[20px]">
+      <div className="w-[606px] h-[530px] p-6 bg-background rounded-[40px] shadow-lg ">
+        <h1 className="text-center text-[26px] font-semibold font-open-sans md:text-[22px] mt-4 sm:text-[20px]">
           Register Your Clinic with TeleNeo!
         </h1>
-        <p className="mb-6 text-center text-sm text-gray-500 sm:text-xs">
+        <p className="mb-10 text-center text-[12px] text-secondary-foreground">
           Join as a clinic who will lorem ipsum dolor sit amet consectetur.
         </p>
 
-        <div className="w-full bg-background p-4">
-          <form onSubmit={handleSubmit(handleSuccessfulSubmit)} className="space-y-4">
-            <InputField
+        <div className=" relative w-[546px] h-[359px]  bg-white ">
+          <form onSubmit={handleSubmit(handleSuccessfulSubmit)} className="space-y-3">
+            <InputField 
               label="Clinic Name"
               placeholder="Enter clinic name"
               type="text"
@@ -93,18 +93,18 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onSubmit }) => {
               error={errors.streetAddress}
             />
 
-            <div className="flex flex-col sm:flex-row justify-end space-y-4 sm:space-y-0 sm:space-x-6 pt-9">
+            <div className="flex flex-col  sm:flex-row justify-end space-y-4 sm:space-y-0 sm:space-x-6 pt-[3.5rem]">
               <Button
                 variant="link"
                 type="button"
-                className="flex justify-center sm:justify-start text-primary"
+                className="flex justify-center font-semibold sm:justify-start text-primary"
                 onClick={handleCancel}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="rounded-3xl bg-primary px-14 py-2 text-background"
+                className="rounded-3xl bg-primary font-semibold px-14 py-2 text-background"
               >
                 Register
               </Button>

@@ -14,11 +14,7 @@ import Icon2 from '@/public/Doctors/adddoctor.svg'; // Ensure this path is corre
 import Icon3 from '@/public/Doctors/file.svg'; // Ensure this path is correct
 import Link from 'next/link';
 import AddPatientModal from './AddPatientModal'; // Import the AddPatientModal component
-import {
- Dialog,
- DialogContent,
- DialogHeader,
-} from '@/components/ui/dialog'; // Import Dialog components
+import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog'; // Import Dialog components
 
 const DashboardPage: React.FC = () => {
  const [isDialogOpen, setIsDialogOpen] = useState(false); // State to control dialog visibility
@@ -27,7 +23,6 @@ const DashboardPage: React.FC = () => {
  const openDialog = () => {
   setIsDialogOpen(true);
  };
-
 
  return (
   <div className="m-8 flex-grow">
@@ -99,8 +94,7 @@ const DashboardPage: React.FC = () => {
    {/* Add Patient Form Dialog */}
    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
     <DialogContent className="sm:max-w-lg">
-     <DialogHeader>
-     </DialogHeader>
+     <DialogHeader></DialogHeader>
      <AddPatientModal /> {/* Your patient form/modal content */}
     </DialogContent>
    </Dialog>
